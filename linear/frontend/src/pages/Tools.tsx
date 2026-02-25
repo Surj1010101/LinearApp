@@ -8,8 +8,8 @@ interface Tool {
   wide?: boolean;
 }
 
-/** Only features from the proposal: daily check-ins, AI recommendations,
- *  stress management, diet & nutrition, work pattern adaption */
+/** this will app will have daily check-ins,ai recommendations,
+ *stress management, diet & nutrition, work pattern adaption */
 const tools: Tool[] = [
   { name: 'Daily Check-in',         icon: '😊', color: '#5B9BD5', path: '/tools/checkin',       wide: true },
   { name: 'AI Recommendations',     icon: '🤖', color: '#7B68EE', path: '/tools/ai',            wide: true },
