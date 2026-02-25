@@ -3,10 +3,10 @@ import Navbar from './Navbar';
 
 const Layout: React.FC = () => (
   <>
-    <Navbar />
-    <main style={{ padding: '1rem' }}>
+    <main className="page">
       <Outlet />
     </main>
+    <Navbar />
   </>
 );
 

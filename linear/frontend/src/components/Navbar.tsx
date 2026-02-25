@@ -1,25 +1,31 @@
-import { Link } from 'react-router-dom';
-import { useAuth } from '../context';
+import { NavLink } from 'react-router-dom';
 
 const Navbar: React.FC = () => {
-  const { isAuthenticated, logout } = useAuth();
-
   return (
-    <nav style={{ display: 'flex', gap: '1rem', padding: '1rem', borderBottom: '1px solid #ddd' }}>
-      <Link to="/">Linear</Link>
-      <div style={{ marginLeft: 'auto', display: 'flex', gap: '1rem' }}>
-        {isAuthenticated ? (
-          <>
-            <Link to="/dashboard">Dashboard</Link>
-            <button onClick={logout}>Logout</button>
-          </>
-        ) : (
-          <>
-            <Link to="/login">Login</Link>
-            <Link to="/register">Register</Link>
-          </>
-        )}
-      </div>
+    <nav className="bottom-nav">
+      <NavLink to="/" end className={({ isActive }) => (isActive ? 'active' : '')}>
+        <span className="nav-icon">🏠</span>
+        Home
+      </NavLink>
+
+      <NavLink to="/inbox" className={({ isActive }) => (isActive ? 'active' : '')}>
+        <span className="nav-icon">📬</span>
+        Inbox
+      </NavLink>
+
+      <NavLink to="/tools" className="fab-link">
+        <span className="fab">＋</span>
+      </NavLink>
+
+      <NavLink to="/history" className={({ isActive }) => (isActive ? 'active' : '')}>
+        <span className="nav-icon">📋</span>
+        History
+      </NavLink>
+
+      <NavLink to="/insights" className={({ isActive }) => (isActive ? 'active' : '')}>
+        <span className="nav-icon">📊</span>
+        Insights
+      </NavLink>
     </nav>
   );
 };
