@@ -26,7 +26,7 @@ model = tf.keras.models.Sequential([
     tf.keras.layers.Dense(32, activation='relu', input_shape=(8,)),
     tf.keras.layers.Dense(16, activation='relu'),
     #Last layer must be 1 dense as we are outputting a single value (burnout score)
-    tf.keras.layers.Dense(1)
+    tf.keras.layers.Dense(1, activation='relu')
 ])
 
 #compiling
