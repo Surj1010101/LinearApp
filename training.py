@@ -1,6 +1,17 @@
 import pandas as pd
 from sklearn.model_selection import train_test_split
 import tensorflow as tf
+import os
+import random
+import numpy as np
+
+lock = False
+#Locking randomness for testing
+if lock:
+    os.environ['PYTHONHASHSEED'] = '0'
+    np.random.seed(50)
+    random.seed(50)
+    tf.random.set_seed(50)
 
 filepath = "C:\\Users\danel\PycharmProjects\AI-Training-Model-Linear-App\Dataset\work_from_home_burnout_dataset.csv"
 data = pd.read_csv(filepath)
@@ -20,13 +31,15 @@ target = data['burnout_score']
 X_train, X_test, y_train, y_test = train_test_split(inputs, target, test_size=0.2, random_state=42)
 
 #Creating neural network
+#Tweaking observation: increasing neurons caused for a higher mse, this could be due to overfitting
+#As our dataset is not too large by overly increasing neurons the model memorises instead of learning
 model = tf.keras.models.Sequential([
     #Input shape: 8 as we have 8 pieces of data per user as shown in inputs
     #Activation: rectified linear unit used for deeper understanding of impact in changes
     tf.keras.layers.Dense(32, activation='relu', input_shape=(8,)),
     tf.keras.layers.Dense(16, activation='relu'),
     #Last layer must be 1 dense as we are outputting a single value (burnout score)
-    tf.keras.layers.Dense(1, activation='relu')
+    tf.keras.layers.Dense(1)
 ])
 
 #compiling
@@ -35,7 +48,9 @@ model = tf.keras.models.Sequential([
 model.compile(optimizer='adam', loss='mean_squared_error')
 
 #training model
-model.fit(X_train, y_train, epochs=50)
+#Epochs is the number of passes through the dataset
+#Tweaking Observations: Best score seems to be between 150-170, over that will cause overfitting
+model.fit(X_train, y_train, epochs=165)
 
 loss = model.evaluate(X_test, y_test)
 print("MSE: ", loss)
