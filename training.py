@@ -1,5 +1,4 @@
 import pandas as pd
-from keras.src.backend.jax.nn import threshold
 from sklearn.model_selection import train_test_split
 import tensorflow as tf
 import os
@@ -18,6 +17,10 @@ if lock:
 
 filepath = "C:\\Users\danel\PycharmProjects\AI-Training-Model-Linear-App\Dataset\work_from_home_burnout_dataset.csv"
 data = pd.read_csv(filepath)
+
+#Cleaning data: capping the burnout score to 100
+#Set ceiling of burnout score to 100 to avoid AI confusion
+data['burnout_score'] = data['burnout_score'].clip(upper=100)
 
 #removing irrelevant columns
 data = data.drop(columns=['user_id', 'burnout_risk'])
