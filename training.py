@@ -1,9 +1,12 @@
 import pandas as pd
+from keras.src.backend.jax.nn import threshold
 from sklearn.model_selection import train_test_split
 import tensorflow as tf
 import os
 import random
 import numpy as np
+import matplotlib.pyplot as plt
+import seaborn as sns
 
 lock = False
 #Locking randomness for testing
@@ -63,3 +66,26 @@ tflite_model = converter.convert()
 with open("model.tflite", "wb") as f:
     f.write(tflite_model)
 print("tflite model saved")
+
+#Residual plot to view AI accuracy
+#Get predictions, use flatten to turn nested list to normal list
+y_prediction = model.predict(X_test).flatten()
+#residual = actual value - predicted value
+residual = y_test - y_prediction
+plt.scatter(y_prediction, residual, alpha=0.5)
+#drawing 0 line to show ideal result
+plt.axhline(y=0, color='k', linestyle='--')
+plt.xlabel('Prediction')
+plt.ylabel('Residual')
+plt.show()
+
+#Saving major outliers for error analysis
+threshold = 15
+outliers = X_test.copy()
+outliers['Actual'] = y_test
+outliers['Prediction'] = y_prediction
+outliers['Error_Amount'] = residual
+major_outliers = outliers[np.abs(outliers['Error_Amount']) > threshold]
+
+major_outliers.to_csv('major_outliers.csv', index=False)
+print("Major outliers saved to major_outliers.csv")
