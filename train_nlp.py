@@ -3,9 +3,11 @@ from transformers import AutoTokenizer, AutoModelForSequenceClassification, Trai
 from datasets import Dataset
 
 #sources:https://huggingface.co/docs/transformers/en/training
+#https://www.datacamp.com/tutorial/fine-tuning-large-language-models
 #https://www.youtube.com/watch?v=QEaBAZQCtwE&t=1s
 
 #Fetching the dataset for AI tuning
+#filepath = "C:\\Users\danel\PycharmProjects\AI-Training-Model-Linear-App\Dataset\\nlp_fine_tuning.csv"
 filepath = "C:\\Users\danel\PycharmProjects\AI-Training-Model-Linear-App\Dataset\\nlp_fine_tuning.csv"
 data = pd.read_csv(filepath)
 data = data.dropna()
