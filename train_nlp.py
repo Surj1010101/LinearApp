@@ -26,7 +26,6 @@ def tokenize(examples):
 #Apply rule to dataset
 tokenized_dataset = hugging_face_dataset.map(tokenize, batched=True)
 
-
 train_dataset = tokenized_dataset
 #set training parameters
 training_args = TrainingArguments(
