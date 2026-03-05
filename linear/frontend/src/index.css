@@ -280,3 +280,373 @@ a {
 .tool-card__name {
   font-size: 1.05rem;
 }
+
+/* Mood slider component */
+.mood-slider {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.mood-slider__header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.mood-slider__label {
+  font-weight: 600;
+  font-size: 0.95rem;
+}
+
+.mood-slider__value {
+  font-size: 0.85rem;
+  color: var(--color-primary);
+  font-weight: 600;
+}
+
+.mood-slider__track {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.mood-slider__anchor {
+  font-size: 1.3rem;
+  flex-shrink: 0;
+}
+
+.mood-slider__input {
+  flex: 1;
+  -webkit-appearance: none;
+  appearance: none;
+  height: 6px;
+  border-radius: 3px;
+  background: var(--color-border);
+  outline: none;
+}
+
+.mood-slider__input::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background: var(--color-primary);
+  cursor: pointer;
+  border: 2px solid #fff;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.2);
+}
+
+.mood-slider__input::-moz-range-thumb {
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background: var(--color-primary);
+  cursor: pointer;
+  border: 2px solid #fff;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.2);
+}
+
+.mood-slider__labels {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.75rem;
+  color: var(--color-text-secondary);
+}
+
+/* Check-in textarea */
+.checkin-textarea {
+  width: 100%;
+  padding: 12px 14px;
+  border: 1.5px solid var(--color-border);
+  border-radius: var(--radius);
+  font-size: 1rem;
+  font-family: inherit;
+  background: var(--color-surface);
+  color: var(--color-text);
+  outline: none;
+  resize: vertical;
+  transition: border-color 0.2s;
+}
+
+.checkin-textarea:focus {
+  border-color: var(--color-primary);
+}
+
+/* Disclaimer banner */
+.disclaimer-banner {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  padding: 12px 14px;
+  background: #fef3c7;
+  border: 1px solid #f59e0b;
+  border-radius: var(--radius);
+  font-size: 0.85rem;
+  color: #92400e;
+}
+
+.disclaimer-banner--compact {
+  font-size: 0.8rem;
+  padding: 10px 12px;
+}
+
+.disclaimer-banner__icon {
+  flex-shrink: 0;
+  font-size: 1.1rem;
+}
+
+/* Exercise card */
+.exercise-card {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.exercise-card__image {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 80px;
+  background: var(--color-bg);
+  border-radius: 8px;
+}
+
+.exercise-card__body {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.exercise-card__category {
+  font-size: 0.85rem;
+  color: var(--color-primary);
+  font-weight: 500;
+}
+
+.exercise-card__desc {
+  font-size: 0.9rem;
+}
+
+.exercise-card__badges {
+  display: flex;
+  gap: 8px;
+  margin-top: 4px;
+}
+
+/* Badge (generic) */
+.badge {
+  display: inline-flex;
+  align-items: center;
+  padding: 3px 10px;
+  border-radius: 20px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+.badge--duration {
+  background: var(--color-bg);
+  color: var(--color-text);
+}
+
+.badge--intensity {
+  color: #fff;
+}
+
+/* Nutrition tip card */
+.nutrition-tip__header {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 8px;
+}
+
+/* Confidence badge */
+.confidence-badge {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 12px 14px;
+  border: 1.5px solid var(--color-border);
+  border-radius: var(--radius);
+  background: var(--color-surface);
+}
+
+.confidence-badge__icon {
+  font-size: 1.3rem;
+  flex-shrink: 0;
+}
+
+.confidence-badge__text {
+  font-size: 0.9rem;
+}
+
+/* Mood chart */
+.mood-chart__header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 12px;
+}
+
+.mood-chart__toggles {
+  display: flex;
+  gap: 4px;
+}
+
+.mood-chart__toggle {
+  padding: 4px 10px;
+  border: 1px solid var(--color-border);
+  border-radius: 6px;
+  background: transparent;
+  font-size: 0.8rem;
+  cursor: pointer;
+  color: var(--color-text-secondary);
+}
+
+.mood-chart__toggle--active {
+  background: var(--color-primary);
+  color: #fff;
+  border-color: var(--color-primary);
+}
+
+.mood-chart__placeholder {
+  padding: 40px 0;
+  text-align: center;
+  font-size: 0.9rem;
+  color: var(--color-text-secondary);
+}
+
+/* Weekly summary */
+.weekly-summary__grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+  margin-top: 12px;
+}
+
+.weekly-summary__stat {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2px;
+  padding: 10px 0;
+}
+
+.weekly-summary__stat-icon {
+  font-size: 1.4rem;
+}
+
+.weekly-summary__stat-value {
+  font-size: 1.25rem;
+  font-weight: 700;
+}
+
+.weekly-summary__stat-label {
+  font-size: 0.75rem;
+  color: var(--color-text-secondary);
+}
+
+/* History rows */
+.history-row {
+  cursor: pointer;
+  transition: box-shadow 0.15s;
+}
+
+.history-row:hover {
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+}
+
+.history-row__header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.history-row__emoji {
+  font-size: 1.8rem;
+  flex-shrink: 0;
+}
+
+.history-row__meta {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.history-row__date {
+  font-weight: 600;
+  font-size: 0.9rem;
+}
+
+.history-row__badges {
+  display: flex;
+  gap: 6px;
+}
+
+.history-row__scores {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  font-size: 0.85rem;
+  color: var(--color-text-secondary);
+}
+
+/* Registration wizard steps indicator */
+.wizard-steps {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+}
+
+.wizard-step {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+}
+
+.wizard-step__dot {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.75rem;
+  font-weight: 700;
+  background: var(--color-border);
+  color: var(--color-text-secondary);
+  transition: background 0.2s, color 0.2s;
+}
+
+.wizard-step--active .wizard-step__dot {
+  background: var(--color-primary);
+  color: #fff;
+}
+
+.wizard-step__label {
+  font-size: 0.65rem;
+  color: var(--color-text-secondary);
+}
+
+/* Goals grid */
+.goals-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+}
+
+/*Twemoji (Figma-style emoji) used in twitter or people like to say x  */
+img.emoji {
+  display: inline-block;
+  height: 1.2em;
+  width: 1.2em;
+  vertical-align: -0.2em;
+  margin: 0 0.05em;
+  /* this to prevent emojis from being dragged orsected as images */
+  pointer-events: none;
+  user-select: none;
+}
