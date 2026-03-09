@@ -6,7 +6,7 @@ export const recommendationService = {
   getToday: () =>
     api.get<ApiResponse<Recommendation>>('/recommendations/today'),
 
-  /** Request an alternative recommendation for example if u say something like ("show me something else") */
+  /** Request an differnt recommendation for example if u say something like ("show me something else") */
   getAlternative: () =>
     api.post<ApiResponse<Recommendation>>('/recommendations/alternative'),
 };
