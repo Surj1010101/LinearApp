@@ -12,7 +12,9 @@ scenarios = {
     "Best Case (Expected: low burnout)": [0, 7, 4, 2, 3, 0, 8, 90],
     "Average Case (Expected: mid range burnout)": [0, 9, 6, 4, 2, 1, 7, 70],
     "Worst Case (Expected: high burnout)": [1, 15, 10, 7, 1, 5, 4, 30],
-
+    "Short Stressful Day (Expected: moderately high burnout)": [0, 4, 10, 2, 0, 0, 8, 75],
+    "Long Relaxing Day (Expected: lower burnout)": [0, 12, 2, 0, 4, 0, 9, 75],
+    #Keeping everything constant with first cases but changing single variables
 
 }
 
