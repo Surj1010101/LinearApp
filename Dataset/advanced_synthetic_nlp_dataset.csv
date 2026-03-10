@@ -1,0 +1,296 @@
+journal_entry,burnout_score,stress_score,productivity_score,engagement_score,nutrition_score,activity_score
+I rushed through debugging all morning and forgot to eat anything until late afternoon while barely leaving my chair,-0.7,-0.6,0.4,0.3,-0.9,-0.8
+I felt calm today while reviewing pull requests and I took a proper lunch with a salad and a short walk outside,0.6,0.5,0.5,0.6,0.7,0.6
+I stayed glued to my screen fixing a deployment issue and grabbed only a sugary snack from the vending machine,-0.6,-0.8,0.6,0.4,-0.6,-0.9
+I planned my tasks clearly this morning and stepped away for a healthy lunch and a quick stretch around the office,0.7,0.6,0.6,0.7,0.8,0.6
+I spent hours in back to back meetings and stress built up while I mindlessly ate chips at my desk,-0.8,-0.7,-0.3,-0.4,-0.5,-0.7
+I wrote documentation at a steady pace and took a break to eat fruit and walk up and down the stairs,0.5,0.4,0.4,0.5,0.7,0.7
+I skipped lunch to finish a tricky coding task and although I shipped the feature I felt drained,-0.5,-0.4,0.7,0.5,-0.8,-0.6
+I worked through a focused coding block then heated a healthy meal and walked outside for ten minutes,0.7,0.6,0.7,0.7,0.8,0.7
+I felt overwhelmed by bug reports and stress snacking kept me at the keyboard all day,-0.9,-0.8,-0.4,-0.5,-0.4,-0.9
+I pair programmed with a colleague and we paused for a balanced lunch and a short stroll,0.6,0.6,0.6,0.8,0.7,0.6
+I pushed through a long refactoring session but ignored hunger and barely stood up,-0.6,-0.5,0.6,0.4,-0.9,-0.8
+I started the day energized writing tests and later enjoyed a homemade lunch before walking around the block,0.8,0.7,0.7,0.7,0.9,0.7
+I kept jumping between Slack messages and ate only a chocolate bar while sitting all afternoon,-0.7,-0.6,-0.3,-0.4,-0.6,-0.9
+I methodically cleaned up technical debt and took a proper lunch break with vegetables and some light stretching,0.6,0.5,0.6,0.6,0.8,0.5
+I felt pressure to finish a sprint task so I skipped meals and hunched over my laptop,-0.8,-0.7,0.5,0.3,-0.9,-0.8
+I enjoyed building a small feature and later ate a balanced lunch while walking around the courtyard,0.7,0.6,0.7,0.7,0.8,0.7
+I sat in a tense incident call for hours and grabbed fast food while staying glued to the desk,-0.9,-0.9,-0.2,-0.3,-0.7,-0.9
+I moved between tasks smoothly today and took time to eat a healthy bowl and stretch my legs,0.6,0.5,0.6,0.6,0.8,0.6
+I was determined to close tickets so I ignored lunch and barely noticed the stiff feeling in my back,-0.6,-0.5,0.6,0.5,-0.9,-0.8
+I wrote clean code in the morning then enjoyed soup and a walk which helped me stay focused,0.7,0.6,0.7,0.7,0.8,0.7
+I felt mentally fried reviewing endless logs and I stress ate cookies without leaving my seat,-0.9,-0.8,-0.4,-0.5,-0.5,-0.9
+I calmly solved a tricky bug then ate a good lunch and paced the hallway for a bit,0.6,0.5,0.7,0.6,0.7,0.6
+I spent the whole afternoon firefighting production issues and forgot about proper food,-0.8,-0.9,0.3,0.4,-0.9,-0.8
+I worked steadily on a dashboard update and took a refreshing break with fruit and a short walk,0.7,0.6,0.6,0.7,0.8,0.7
+I felt sluggish after snacking on junk while sitting through long planning meetings,-0.6,-0.5,-0.3,-0.4,-0.6,-0.7
+I coded a feature branch with good momentum then ate a healthy wrap and walked outside,0.7,0.6,0.7,0.7,0.8,0.7
+I pushed hard to finish a script and ended up skipping meals and movement,-0.7,-0.6,0.6,0.4,-0.9,-0.9
+I took regular breaks while writing tests and enjoyed a nutritious lunch with a quick stroll,0.8,0.7,0.6,0.7,0.9,0.7
+I felt drained juggling bug fixes and I only grabbed a soda while staying seated,-0.8,-0.7,-0.2,-0.3,-0.7,-0.9
+I delivered a solid code review session and stepped away for a healthy lunch and a brief walk,0.6,0.6,0.6,0.7,0.8,0.6
+I sat hunched debugging a stubborn issue and ignored both lunch and movement,-0.7,-0.6,0.5,0.4,-0.9,-0.9
+I enjoyed designing a new API and later ate a balanced meal before walking around the building,0.7,0.6,0.7,0.8,0.8,0.7
+I felt anxious about deadlines and kept snacking on candy while barely moving,-0.9,-0.8,-0.3,-0.4,-0.6,-0.9
+I progressed nicely on a refactor and took time for a healthy lunch and some steps outside,0.7,0.6,0.6,0.7,0.8,0.7
+I powered through tasks without breaks and realized late that I had skipped lunch,-0.6,-0.5,0.6,0.4,-0.9,-0.8
+I felt engaged during a productive coding sprint and enjoyed a proper meal and a short walk,0.8,0.6,0.8,0.8,0.8,0.7
+I stayed tense during a production alert and grabbed greasy takeout at my desk,-0.8,-0.9,-0.2,-0.3,-0.7,-0.8
+I worked through tickets calmly and ate a nutritious bowl while stretching my legs,0.6,0.5,0.6,0.6,0.8,0.6
+I ignored my posture and food while chasing a memory leak all afternoon,-0.7,-0.6,0.5,0.4,-0.9,-0.9
+I made steady progress on a feature and stepped out for a healthy lunch and fresh air,0.7,0.6,0.7,0.7,0.8,0.7
+I felt overwhelmed by Slack notifications and stress ate snacks while sitting still,-0.8,-0.7,-0.3,-0.4,-0.5,-0.9
+I enjoyed a focused morning writing code and later ate well and walked around the office,0.7,0.6,0.7,0.7,0.8,0.6
+I rushed to meet a deadline and skipped lunch which left me feeling worn out,-0.7,-0.6,0.6,0.4,-0.9,-0.8
+I calmly worked through a backlog item and took a healthy lunch break with a short walk,0.7,0.6,0.6,0.7,0.8,0.7
+I felt stressed during long debugging sessions and ate junk food without moving,-0.9,-0.8,-0.3,-0.4,-0.6,-0.9
+I wrapped up tasks efficiently and enjoyed a balanced meal plus a stroll outside,0.8,0.6,0.7,0.7,0.9,0.7
+I forced myself through coding while ignoring hunger and staying glued to the chair,-0.7,-0.6,0.5,0.4,-0.9,-0.9
+I collaborated on a feature build and later ate a healthy lunch before walking around,0.7,0.6,0.7,0.8,0.8,0.7
+I struggled with fatigue from poor snacks and constant sitting during the workday,-0.8,-0.7,-0.4,-0.5,-0.6,-0.9
+I ended the day satisfied after productive coding plus a good meal and some movement,0.8,0.6,0.8,0.8,0.8,0.7
+I felt refreshed starting the morning with a clear coding goal and I stepped out for a balanced lunch and a short walk,0.8,0.7,0.7,0.8,0.8,0.7
+I spent the morning fixing merge conflicts and forgot to eat until late which left me feeling a bit drained,-0.5,-0.4,0.6,0.5,-0.8,-0.6
+I calmly worked through documentation updates and enjoyed a healthy lunch while stretching my legs,0.6,0.5,0.5,0.6,0.8,0.6
+I was stuck in stressful incident calls and grabbed chips at my desk without moving much,-0.9,-0.9,-0.3,-0.4,-0.5,-0.9
+I focused deeply on building a new feature and took a proper lunch with fruit before walking outside,0.7,0.6,0.8,0.8,0.8,0.7
+I kept switching between Slack threads and barely ate anything while sitting all afternoon,-0.6,-0.6,-0.2,-0.3,-0.8,-0.9
+I progressed nicely through code reviews and enjoyed a balanced meal followed by a quick walk,0.7,0.6,0.6,0.7,0.8,0.7
+I felt pressure to finish a release so I skipped lunch and stayed glued to my keyboard,-0.7,-0.7,0.7,0.5,-0.9,-0.9
+I wrapped up several small bugs and later ate a healthy salad before pacing around the office,0.7,0.6,0.6,0.7,0.8,0.6
+I felt tense while chasing a deployment error and stress ate candy without leaving my seat,-0.8,-0.8,-0.3,-0.4,-0.6,-0.9
+I enjoyed steady progress writing tests and took a relaxing lunch break with a walk,0.8,0.7,0.6,0.7,0.8,0.7
+I rushed through sprint tasks and ended up eating only a granola bar at my desk,-0.5,-0.5,0.6,0.5,-0.7,-0.8
+I pair programmed on a tricky bug and we later stepped out for a proper meal and some fresh air,0.7,0.6,0.7,0.8,0.8,0.7
+I spent hours reviewing logs under pressure and grabbed fast food while staying seated,-0.9,-0.9,-0.2,-0.3,-0.7,-0.9
+I steadily implemented an API endpoint and took time to eat vegetables and stretch,0.7,0.6,0.7,0.7,0.8,0.6
+I ignored hunger while finishing a refactor and barely moved from my chair,-0.6,-0.5,0.7,0.5,-0.9,-0.9
+I had a productive morning building UI components and later enjoyed a healthy lunch and short walk,0.8,0.6,0.8,0.8,0.8,0.7
+I felt overwhelmed by endless notifications and snacked on junk while sitting all day,-0.8,-0.7,-0.3,-0.4,-0.6,-0.9
+I cleaned up old code branches and took a refreshing lunch break with fruit and a stroll,0.7,0.6,0.6,0.7,0.8,0.7
+I rushed through debugging and skipped lunch which made me feel tired later,-0.6,-0.6,0.6,0.5,-0.9,-0.8
+I worked through a clear task list and paused for a balanced meal before walking outside,0.8,0.6,0.7,0.8,0.8,0.7
+I stayed tense in long architecture meetings and ate chips at my desk,-0.7,-0.6,-0.3,-0.4,-0.5,-0.8
+I enjoyed building a small automation script and later took a healthy lunch break with movement,0.7,0.6,0.7,0.7,0.8,0.7
+I kept firefighting production bugs and forgot about proper meals,-0.8,-0.9,0.2,0.3,-0.9,-0.8
+I calmly wrote documentation and ate a nutritious bowl while walking around the office,0.6,0.5,0.5,0.6,0.8,0.6
+I stayed glued to my laptop finishing a deadline and ate only a candy bar,-0.7,-0.7,0.6,0.4,-0.7,-0.9
+I made solid progress on backend logic and later had a healthy wrap and short walk,0.7,0.6,0.7,0.7,0.8,0.7
+I felt anxious during an outage response and grabbed greasy takeout,-0.9,-0.9,-0.3,-0.4,-0.7,-0.8
+I enjoyed reviewing pull requests and took a lunch break with fruit and some light stretching,0.7,0.6,0.6,0.7,0.8,0.6
+I powered through bug fixes while skipping meals and staying seated,-0.6,-0.6,0.7,0.5,-0.9,-0.9
+I spent the morning designing a system diagram then walked out for a healthy lunch,0.7,0.6,0.6,0.7,0.8,0.7
+I stress snacked on cookies while juggling several urgent tickets,-0.8,-0.7,-0.2,-0.3,-0.6,-0.8
+I completed a satisfying coding sprint and followed it with a balanced meal and walk,0.8,0.6,0.8,0.8,0.8,0.7
+I felt tired debugging old code and skipped lunch without realizing,-0.6,-0.5,0.5,0.4,-0.9,-0.8
+I steadily tackled my backlog and enjoyed a healthy lunch outside,0.7,0.6,0.6,0.7,0.8,0.7
+I stayed stressed during a long incident bridge and ate junk food,-0.9,-0.9,-0.3,-0.4,-0.6,-0.9
+I implemented a feature smoothly and took time to eat a nutritious bowl and walk,0.7,0.6,0.7,0.7,0.8,0.7
+I rushed between meetings and grabbed a sugary drink instead of lunch,-0.6,-0.6,-0.2,-0.3,-0.7,-0.7
+I felt proud finishing a tricky refactor and enjoyed a healthy meal with a stroll,0.8,0.6,0.8,0.8,0.8,0.7
+I kept sitting through debugging sessions and snacked on chips,-0.7,-0.6,-0.3,-0.4,-0.6,-0.9
+I handled code reviews calmly and took a balanced lunch break with movement,0.7,0.6,0.6,0.7,0.8,0.6
+I skipped meals while chasing a memory bug and barely stood up,-0.7,-0.7,0.6,0.5,-0.9,-0.9
+I worked efficiently on a frontend feature and later ate a healthy salad and walked,0.8,0.6,0.8,0.8,0.8,0.7
+I felt overwhelmed by sprint planning and ate candy while sitting,-0.7,-0.7,-0.3,-0.4,-0.6,-0.8
+I progressed through testing tasks and took a refreshing lunch break outdoors,0.7,0.6,0.6,0.7,0.8,0.7
+I stayed glued to my chair resolving bugs and forgot about proper food,-0.7,-0.6,0.5,0.4,-0.9,-0.9
+I enjoyed a productive coding flow and followed it with a healthy lunch and short walk,0.8,0.6,0.8,0.8,0.8,0.7
+I felt drained responding to alerts and grabbed vending machine snacks,-0.8,-0.8,-0.2,-0.3,-0.6,-0.9
+I calmly finished my tasks and ate a nutritious meal before walking outside,0.8,0.6,0.7,0.7,0.9,0.7
+I began the morning clearing a backlog ticket and later stepped out for a healthy lunch and a quick walk,0.7,0.6,0.7,0.7,0.8,0.7
+I sat through constant notification pings while nibbling on junk food and barely moving,-0.8,-0.7,-0.3,-0.4,-0.6,-0.9
+I carefully reviewed a teammate's code and enjoyed a balanced meal before stretching my legs,0.7,0.6,0.6,0.7,0.8,0.6
+I rushed to patch a bug and skipped lunch which left me feeling tense,-0.6,-0.7,0.6,0.5,-0.9,-0.8
+I felt motivated building a new UI widget and later took a proper lunch break outside,0.8,0.6,0.8,0.8,0.8,0.7
+I struggled through slow debugging and ate chips while sitting most of the day,-0.7,-0.6,-0.3,-0.4,-0.5,-0.9
+I completed a helpful code review session and grabbed a healthy wrap before walking around,0.7,0.6,0.6,0.7,0.8,0.7
+I stayed glued to my desk chasing a regression bug and forgot about lunch,-0.7,-0.6,0.5,0.4,-0.9,-0.9
+I organized my tasks clearly and enjoyed fruit and a short stroll after lunch,0.7,0.6,0.6,0.7,0.8,0.7
+I felt pressure during a production alert and stress ate candy bars,-0.9,-0.9,-0.3,-0.4,-0.6,-0.8
+I made steady progress writing backend logic and took time for a nutritious meal,0.7,0.6,0.7,0.7,0.8,0.6
+I ignored hunger while pushing commits and barely stood up,-0.6,-0.5,0.7,0.5,-0.9,-0.9
+I calmly refactored a module and later ate a healthy bowl and walked outside,0.7,0.6,0.7,0.7,0.8,0.7
+I bounced between urgent tickets and snacked on cookies at my desk,-0.8,-0.7,-0.2,-0.3,-0.6,-0.9
+I enjoyed productive pair programming and we stepped out for a balanced lunch,0.8,0.6,0.8,0.8,0.8,0.7
+I sat through long meetings feeling drained while eating vending machine snacks,-0.7,-0.6,-0.3,-0.4,-0.7,-0.8
+I wrote integration tests smoothly and took a healthy lunch break with movement,0.7,0.6,0.7,0.7,0.8,0.7
+I worked nonstop to meet a deadline and skipped meals,-0.7,-0.7,0.6,0.4,-0.9,-0.9
+I felt energized solving a tricky bug and later enjoyed a balanced lunch outdoors,0.8,0.6,0.8,0.8,0.8,0.7
+I kept sitting during a stressful deployment fix and grabbed fast food,-0.8,-0.9,-0.3,-0.4,-0.7,-0.9
+I cleared several support tickets and ate a healthy salad before walking around,0.7,0.6,0.6,0.7,0.8,0.7
+I felt distracted by chat messages and ate only a chocolate bar,-0.6,-0.6,-0.2,-0.3,-0.7,-0.8
+I designed part of a system diagram and took a refreshing lunch break,0.7,0.6,0.6,0.7,0.8,0.6
+I stayed hunched debugging all afternoon and forgot to eat,-0.7,-0.6,0.5,0.4,-0.9,-0.9
+I progressed nicely through sprint tasks and enjoyed a healthy wrap outside,0.7,0.6,0.7,0.7,0.8,0.7
+I felt worn out responding to alerts and snacked on junk food,-0.8,-0.8,-0.2,-0.3,-0.6,-0.9
+I reviewed documentation updates and paused for fruit and a walk,0.6,0.5,0.5,0.6,0.8,0.6
+I skipped lunch to finalize a code merge which left me tired,-0.6,-0.6,0.6,0.5,-0.9,-0.8
+I enjoyed implementing a small automation tool and took a healthy lunch break,0.8,0.6,0.8,0.8,0.8,0.7
+I kept snacking on chips while dealing with frustrating bugs,-0.8,-0.7,-0.3,-0.4,-0.6,-0.9
+I worked steadily through pull requests and later ate a balanced meal,0.7,0.6,0.6,0.7,0.8,0.6
+I sat in stressful standups and forgot about proper food,-0.7,-0.6,-0.2,-0.3,-0.8,-0.7
+I made good progress on frontend styling and stepped outside for lunch,0.7,0.6,0.7,0.7,0.8,0.7
+I chased a persistent bug and skipped both lunch and breaks,-0.7,-0.7,0.5,0.4,-0.9,-0.9
+I calmly handled support requests and ate a nutritious bowl,-0.6,0.5,0.5,0.6,0.8,0.6
+I felt overwhelmed by sprint deadlines and grabbed candy,-0.8,-0.8,-0.3,-0.4,-0.6,-0.8
+I wrapped up a feature branch and took a refreshing walk after lunch,0.8,0.6,0.8,0.8,0.8,0.7
+I spent hours seated reviewing logs and ate junk food,-0.7,-0.6,-0.3,-0.4,-0.6,-0.9
+I carefully debugged a memory issue and later enjoyed a healthy salad,0.7,0.6,0.7,0.7,0.8,0.6
+I kept sitting through back to back meetings and skipped meals,-0.7,-0.7,-0.3,-0.4,-0.9,-0.8
+I felt satisfied completing a coding milestone and took a lunch walk,0.8,0.6,0.8,0.8,0.8,0.7
+I stress ate cookies during a long outage investigation,-0.9,-0.9,-0.3,-0.4,-0.6,-0.9
+I updated project documentation and enjoyed fruit and fresh air,0.6,0.5,0.5,0.6,0.8,0.6
+I rushed to push commits and forgot to eat lunch,-0.6,-0.6,0.6,0.5,-0.9,-0.8
+I felt engaged while coding a feature and took a healthy meal break,0.8,0.6,0.8,0.8,0.8,0.7
+I struggled with fatigue after snacking on junk at my desk,-0.7,-0.6,-0.3,-0.4,-0.6,-0.9
+I made steady backend progress and later walked outside after lunch,0.7,0.6,0.7,0.7,0.8,0.7
+I spent the day firefighting bugs and grabbed fast food,-0.8,-0.9,-0.2,-0.3,-0.7,-0.8
+I calmly finished my coding tasks and ate a balanced meal with a short walk,0.8,0.6,0.7,0.7,0.9,0.7
+I mapped out my coding tasks early and later stepped away for a healthy lunch and a brisk walk,0.8,0.6,0.7,0.8,0.8,0.7
+I spent the morning untangling messy code and snacked on candy while staying glued to my chair,-0.7,-0.6,-0.2,-0.3,-0.6,-0.9
+I calmly merged a feature branch and took a lunch break with vegetables and a short walk,0.7,0.6,0.7,0.7,0.8,0.7
+I rushed through bug fixes and skipped lunch which left me feeling tense later,-0.6,-0.7,0.6,0.5,-0.9,-0.8
+I enjoyed a productive session building a dashboard and followed it with a balanced meal outside,0.8,0.6,0.8,0.8,0.8,0.7
+I felt overwhelmed by notifications and mindlessly ate chips at my desk,-0.8,-0.7,-0.3,-0.4,-0.5,-0.9
+I wrapped up several pull requests and grabbed a healthy wrap before walking around,0.7,0.6,0.6,0.7,0.8,0.7
+I stayed seated for hours debugging an API issue and forgot about lunch,-0.7,-0.6,0.5,0.4,-0.9,-0.9
+I methodically tested a new feature and later enjoyed fruit during a short stroll,0.7,0.6,0.6,0.7,0.8,0.7
+I sat in a stressful deployment call and grabbed vending machine snacks,-0.9,-0.9,-0.3,-0.4,-0.7,-0.8
+I steadily built out backend logic and paused for a nutritious lunch,0.7,0.6,0.7,0.7,0.8,0.6
+I pushed commits nonstop and ignored hunger while barely moving,-0.6,-0.5,0.7,0.5,-0.9,-0.9
+I cleaned up technical debt and enjoyed a healthy bowl before walking outside,0.7,0.6,0.7,0.7,0.8,0.7
+I bounced between urgent bug reports and stress ate cookies,-0.8,-0.7,-0.2,-0.3,-0.6,-0.9
+I collaborated on a feature implementation and later stepped out for a proper lunch,0.8,0.6,0.8,0.8,0.8,0.7
+I stayed stuck in long planning meetings while snacking on junk,-0.7,-0.6,-0.3,-0.4,-0.6,-0.8
+I wrote integration tests with focus and took a refreshing lunch walk,0.7,0.6,0.7,0.7,0.8,0.7
+I worked through lunch to finish a merge and felt worn out later,-0.7,-0.7,0.6,0.4,-0.9,-0.8
+I solved a tricky bug and celebrated with a balanced meal and a short walk,0.8,0.6,0.8,0.8,0.8,0.7
+I stayed tense during a production incident and grabbed greasy takeout,-0.9,-0.9,-0.3,-0.4,-0.7,-0.9
+I closed several backlog tickets and enjoyed a healthy salad outside,0.7,0.6,0.6,0.7,0.8,0.7
+I felt distracted by chat messages and ate only a sugary snack,-0.6,-0.6,-0.2,-0.3,-0.7,-0.8
+I spent time designing an architecture diagram and took a calm lunch break,0.7,0.6,0.6,0.7,0.8,0.6
+I stayed hunched over debugging logs all afternoon and skipped meals,-0.7,-0.6,0.5,0.4,-0.9,-0.9
+I progressed smoothly through sprint work and enjoyed a healthy wrap outside,0.7,0.6,0.7,0.7,0.8,0.7
+I felt drained responding to alerts and grabbed junk food,-0.8,-0.8,-0.2,-0.3,-0.6,-0.9
+I updated documentation carefully and paused for fruit and fresh air,0.6,0.5,0.5,0.6,0.8,0.6
+I skipped lunch to finalize a release patch which left me tired,-0.6,-0.6,0.6,0.5,-0.9,-0.8
+I enjoyed writing a small automation script and took a healthy lunch break,0.8,0.6,0.8,0.8,0.8,0.7
+I kept snacking on chips while struggling through a confusing bug,-0.8,-0.7,-0.3,-0.4,-0.6,-0.9
+I calmly reviewed pull requests and later ate a balanced meal,0.7,0.6,0.6,0.7,0.8,0.6
+I felt stressed during a long standup and forgot to eat properly,-0.7,-0.6,-0.2,-0.3,-0.8,-0.7
+I made good progress styling a frontend page and stepped outside for lunch,0.7,0.6,0.7,0.7,0.8,0.7
+I chased a persistent database bug and skipped both lunch and breaks,-0.7,-0.7,0.5,0.4,-0.9,-0.9
+I calmly worked through support requests and ate a nutritious bowl,0.6,0.5,0.5,0.6,0.8,0.6
+I felt overwhelmed by deadlines and grabbed candy from the vending machine,-0.8,-0.8,-0.3,-0.4,-0.6,-0.8
+I wrapped up a feature release and took a refreshing walk after lunch,0.8,0.6,0.8,0.8,0.8,0.7
+I spent hours seated reviewing stack traces and ate junk food,-0.7,-0.6,-0.3,-0.4,-0.6,-0.9
+I carefully debugged a performance issue and later enjoyed a healthy salad,0.7,0.6,0.7,0.7,0.8,0.6
+I kept sitting through back to back sync meetings and skipped meals,-0.7,-0.7,-0.3,-0.4,-0.9,-0.8
+I felt proud finishing a difficult refactor and took a lunch walk,0.8,0.6,0.8,0.8,0.8,0.7
+I stress ate cookies during a tense outage investigation,-0.9,-0.9,-0.3,-0.4,-0.6,-0.9
+I revised project documentation and enjoyed fruit and a bit of fresh air,0.6,0.5,0.5,0.6,0.8,0.6
+I rushed to push commits before a deadline and forgot lunch,-0.6,-0.6,0.6,0.5,-0.9,-0.8
+I felt deeply engaged building a new feature and took a healthy meal break,0.8,0.6,0.8,0.8,0.8,0.7
+I struggled with fatigue after eating junk snacks all afternoon,-0.7,-0.6,-0.3,-0.4,-0.6,-0.9
+I made steady backend progress and walked outside after lunch,0.7,0.6,0.7,0.7,0.8,0.7
+I spent the day firefighting bugs and grabbed greasy fast food,-0.8,-0.9,-0.2,-0.3,-0.7,-0.8
+I calmly wrapped up my coding tasks and enjoyed a balanced meal and walk,0.8,0.6,0.7,0.7,0.9,0.7
+I began the day organizing my sprint tasks and later took a break for a healthy lunch and a short walk,0.8,0.6,0.7,0.8,0.8,0.7
+I felt drained while digging through stack traces and I only ate a bag of chips at my desk,-0.7,-0.6,-0.3,-0.4,-0.6,-0.9
+I carefully refactored an old module and enjoyed a balanced meal before stretching my legs,0.7,0.6,0.7,0.7,0.8,0.6
+I hurried to finish a release fix and skipped lunch which made me tense later,-0.6,-0.7,0.6,0.5,-0.9,-0.8
+I had a satisfying coding flow building an API endpoint and later walked outside after eating well,0.8,0.6,0.8,0.8,0.8,0.7
+I sat through endless chat notifications and snacked on candy while barely moving,-0.8,-0.7,-0.2,-0.3,-0.6,-0.9
+I completed several thoughtful code reviews and grabbed a healthy wrap before walking around,0.7,0.6,0.6,0.7,0.8,0.7
+I stayed glued to the keyboard troubleshooting a database issue and forgot lunch,-0.7,-0.6,0.5,0.4,-0.9,-0.9
+I progressed through sprint tickets and enjoyed fruit during a short break outdoors,0.7,0.6,0.6,0.7,0.8,0.7
+I felt pressure during a deployment problem and grabbed vending machine snacks,-0.9,-0.9,-0.3,-0.4,-0.7,-0.8
+I steadily wrote backend logic and paused for a nutritious meal,0.7,0.6,0.7,0.7,0.8,0.6
+I pushed commits nonstop and ignored hunger while staying seated,-0.6,-0.5,0.7,0.5,-0.9,-0.9
+I updated documentation carefully and later enjoyed a healthy bowl outside,0.7,0.6,0.6,0.7,0.8,0.7
+I bounced between urgent support tickets and stress ate cookies,-0.8,-0.7,-0.2,-0.3,-0.6,-0.9
+I collaborated on designing a feature and later stepped out for a proper lunch,0.8,0.6,0.8,0.8,0.8,0.7
+I felt sluggish sitting through long planning meetings while eating junk,-0.7,-0.6,-0.3,-0.4,-0.6,-0.8
+I wrote integration tests with focus and took a refreshing walk after lunch,0.7,0.6,0.7,0.7,0.8,0.7
+I worked through lunch to complete a tricky merge and felt tired later,-0.7,-0.7,0.6,0.4,-0.9,-0.8
+I solved a complex bug and celebrated with a healthy meal and a short stroll,0.8,0.6,0.8,0.8,0.8,0.7
+I stayed tense during a production outage and grabbed greasy takeout,-0.9,-0.9,-0.3,-0.4,-0.7,-0.9
+I cleared several backlog items and enjoyed a fresh salad outside,0.7,0.6,0.6,0.7,0.8,0.7
+I kept getting distracted by messages and ate only a chocolate bar,-0.6,-0.6,-0.2,-0.3,-0.7,-0.8
+I sketched a system design and took a calm lunch break afterwards,0.7,0.6,0.6,0.7,0.8,0.6
+I stayed hunched over logs for hours and skipped meals,-0.7,-0.6,0.5,0.4,-0.9,-0.9
+I progressed smoothly through sprint work and enjoyed a healthy wrap outside,0.7,0.6,0.7,0.7,0.8,0.7
+I felt drained responding to system alerts and grabbed junk snacks,-0.8,-0.8,-0.2,-0.3,-0.6,-0.9
+I revised technical documentation and paused for fruit and fresh air,0.6,0.5,0.5,0.6,0.8,0.6
+I skipped lunch to finalize a hotfix which left me feeling tired,-0.6,-0.6,0.6,0.5,-0.9,-0.8
+I enjoyed building a small automation tool and took a healthy meal break,0.8,0.6,0.8,0.8,0.8,0.7
+I kept snacking on chips while struggling through a confusing error,-0.8,-0.7,-0.3,-0.4,-0.6,-0.9
+I calmly reviewed pull requests and later ate a balanced lunch,0.7,0.6,0.6,0.7,0.8,0.6
+I felt tense during a long standup and forgot to eat properly,-0.7,-0.6,-0.2,-0.3,-0.8,-0.7
+I made solid progress styling a frontend layout and stepped outside for lunch,0.7,0.6,0.7,0.7,0.8,0.7
+I chased a stubborn database bug and skipped both lunch and breaks,-0.7,-0.7,0.5,0.4,-0.9,-0.9
+I calmly handled support tasks and ate a nutritious bowl,0.6,0.5,0.5,0.6,0.8,0.6
+I felt overwhelmed by deadlines and grabbed candy from the office kitchen,-0.8,-0.8,-0.3,-0.4,-0.6,-0.8
+I wrapped up a feature release and took a refreshing walk after lunch,0.8,0.6,0.8,0.8,0.8,0.7
+I spent hours seated reviewing stack traces and ate junk food,-0.7,-0.6,-0.3,-0.4,-0.6,-0.9
+I carefully debugged a performance issue and later enjoyed a healthy salad,0.7,0.6,0.7,0.7,0.8,0.6
+I kept sitting through back to back meetings and skipped meals,-0.7,-0.7,-0.3,-0.4,-0.9,-0.8
+I felt proud finishing a difficult refactor and took a lunch walk,0.8,0.6,0.8,0.8,0.8,0.7
+I stress ate cookies during a tense outage investigation,-0.9,-0.9,-0.3,-0.4,-0.6,-0.9
+I updated project documentation and enjoyed fruit and some fresh air,0.6,0.5,0.5,0.6,0.8,0.6
+I rushed to push commits before a deadline and forgot lunch,-0.6,-0.6,0.6,0.5,-0.9,-0.8
+I felt engaged building a new feature and took a healthy lunch break,0.8,0.6,0.8,0.8,0.8,0.7
+I struggled with fatigue after snacking on junk throughout the afternoon,-0.7,-0.6,-0.3,-0.4,-0.6,-0.9
+I made steady backend progress and walked outside after lunch,0.7,0.6,0.7,0.7,0.8,0.7
+I spent the day firefighting bugs and grabbed greasy fast food,-0.8,-0.9,-0.2,-0.3,-0.7,-0.8
+I calmly finished my coding tasks and enjoyed a balanced meal and walk,0.8,0.6,0.7,0.7,0.9,0.7
+I started the morning planning a refactor and later stepped outside for a healthy lunch and some fresh air,0.8,0.6,0.7,0.8,0.8,0.7
+I felt drained digging through error logs and ate a candy bar while sitting the whole time,-0.7,-0.6,-0.3,-0.4,-0.7,-0.9
+I finished reviewing several pull requests and enjoyed a balanced salad before walking around the building,0.7,0.6,0.6,0.7,0.8,0.7
+I hurried through debugging to meet a deadline and skipped lunch completely,-0.6,-0.7,0.6,0.5,-0.9,-0.8
+I had a productive coding session building an API and followed it with a nutritious meal outside,0.8,0.6,0.8,0.8,0.8,0.7
+I sat through endless Slack alerts and kept snacking on chips without moving,-0.8,-0.7,-0.3,-0.4,-0.6,-0.9
+I methodically cleaned up technical debt and later took a lunch break with fruit and a short walk,0.7,0.6,0.7,0.7,0.8,0.7
+I stayed glued to my chair troubleshooting a memory leak and forgot about food,-0.7,-0.6,0.5,0.4,-0.9,-0.9
+I progressed through sprint tasks and enjoyed a healthy wrap during a break outdoors,0.7,0.6,0.7,0.7,0.8,0.7
+I felt pressure while responding to a production alert and grabbed vending machine snacks,-0.9,-0.9,-0.3,-0.4,-0.7,-0.8
+I wrote backend tests steadily and paused for a balanced lunch,0.7,0.6,0.7,0.7,0.8,0.6
+I pushed commits nonstop and ignored hunger while barely leaving my seat,-0.6,-0.5,0.7,0.5,-0.9,-0.9
+I updated documentation and enjoyed a healthy bowl before walking outside,0.7,0.6,0.6,0.7,0.8,0.7
+I bounced between urgent tickets and stress ate cookies at my desk,-0.8,-0.7,-0.2,-0.3,-0.6,-0.9
+I collaborated with a teammate on a feature and later stepped out for a proper lunch,0.8,0.6,0.8,0.8,0.8,0.7
+I sat in long architecture meetings while eating junk food,-0.7,-0.6,-0.3,-0.4,-0.6,-0.8
+I carefully wrote integration tests and took a refreshing walk after lunch,0.7,0.6,0.7,0.7,0.8,0.7
+I worked through lunch to finish a complex merge and felt worn out,-0.7,-0.7,0.6,0.4,-0.9,-0.8
+I solved a stubborn bug and rewarded myself with a healthy meal and a short walk,0.8,0.6,0.8,0.8,0.8,0.7
+I stayed tense during an outage investigation and grabbed greasy takeout,-0.9,-0.9,-0.3,-0.4,-0.7,-0.9
+I cleared several backlog tickets and enjoyed a fresh salad outside,0.7,0.6,0.6,0.7,0.8,0.7
+I kept getting distracted by chat messages and ate only a chocolate snack,-0.6,-0.6,-0.2,-0.3,-0.7,-0.8
+I drafted a system diagram and took a calm lunch break afterwards,0.7,0.6,0.6,0.7,0.8,0.6
+I stayed hunched over logs all afternoon and skipped meals,-0.7,-0.6,0.5,0.4,-0.9,-0.9
+I progressed smoothly through sprint tasks and enjoyed a healthy wrap outdoors,0.7,0.6,0.7,0.7,0.8,0.7
+I felt drained responding to system alerts and grabbed junk snacks,-0.8,-0.8,-0.2,-0.3,-0.6,-0.9
+I revised documentation and paused for fruit and fresh air,0.6,0.5,0.5,0.6,0.8,0.6
+I skipped lunch to finalize a release patch and felt tired later,-0.6,-0.6,0.6,0.5,-0.9,-0.8
+I enjoyed building a small automation script and took a healthy meal break,0.8,0.6,0.8,0.8,0.8,0.7
+I kept snacking on chips while struggling through a confusing error,-0.8,-0.7,-0.3,-0.4,-0.6,-0.9
+I calmly reviewed pull requests and later ate a balanced lunch,0.7,0.6,0.6,0.7,0.8,0.6
+I felt tense during a long standup meeting and forgot to eat,-0.7,-0.6,-0.2,-0.3,-0.8,-0.7
+I made steady progress styling a frontend page and stepped outside for lunch,0.7,0.6,0.7,0.7,0.8,0.7
+I chased a stubborn database bug and skipped both lunch and breaks,-0.7,-0.7,0.5,0.4,-0.9,-0.9
+I calmly handled support tasks and ate a nutritious bowl,0.6,0.5,0.5,0.6,0.8,0.6
+I felt overwhelmed by deadlines and grabbed candy from the office kitchen,-0.8,-0.8,-0.3,-0.4,-0.6,-0.8
+I wrapped up a feature release and took a refreshing walk after lunch,0.8,0.6,0.8,0.8,0.8,0.7
+I spent hours seated reviewing stack traces and ate junk food,-0.7,-0.6,-0.3,-0.4,-0.6,-0.9
+I carefully debugged a performance issue and later enjoyed a healthy salad,0.7,0.6,0.7,0.7,0.8,0.6
+I kept sitting through back to back meetings and skipped meals,-0.7,-0.7,-0.3,-0.4,-0.9,-0.8
+I felt proud finishing a difficult refactor and took a lunch walk,0.8,0.6,0.8,0.8,0.8,0.7
+I stress ate cookies during a tense outage investigation,-0.9,-0.9,-0.3,-0.4,-0.6,-0.9
+I updated project documentation and enjoyed fruit and fresh air,0.6,0.5,0.5,0.6,0.8,0.6
+I rushed to push commits before a deadline and forgot lunch,-0.6,-0.6,0.6,0.5,-0.9,-0.8
+I felt engaged building a new feature and took a healthy lunch break,0.8,0.6,0.8,0.8,0.8,0.7
+I struggled with fatigue after snacking on junk throughout the afternoon,-0.7,-0.6,-0.3,-0.4,-0.6,-0.9
+I made steady backend progress and walked outside after lunch,0.7,0.6,0.7,0.7,0.8,0.7
+I spent the day firefighting bugs and grabbed greasy fast food,-0.8,-0.9,-0.2,-0.3,-0.7,-0.8
+I calmly finished my coding tasks and enjoyed a balanced meal and walk,0.8,0.6,0.7,0.7,0.9,0.7
