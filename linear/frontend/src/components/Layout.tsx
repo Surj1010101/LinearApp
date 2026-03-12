@@ -3,9 +3,9 @@ import Navbar from './Navbar';
 import { useTwemoji } from '../hooks/useTwemoji';
 
 const Layout: React.FC = () => {
-  const { pathname } = useLocation();
-  // Reparse emojis whenever we navigate to a different page
-  const wrapperRef = useTwemoji<HTMLDivElement>([pathname]);
+  useLocation();
+  // MutationObserver inside useTwemoji auto-reparses on DOM changes
+  const wrapperRef = useTwemoji<HTMLDivElement>();
 
   return (
     <div ref={wrapperRef}>
