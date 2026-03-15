@@ -20,7 +20,14 @@ main
 - Model files and training scripts present (train_nlp.py, training.py)
 - Dataset folder included for model training
 
-
+## Backend
+- Implemented using python
+- Uses SQLite db (linear.db)
+- API endpoints defined in routes folder
+- User auth implemented
+- DB models defined for user, checkin recommendation
+- Rule based recommendation eng
+  
 ## Observations
 - Frontend structure seems well developed
 - AI model exists and well develeoped 
