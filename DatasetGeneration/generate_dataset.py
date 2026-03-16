@@ -316,7 +316,52 @@ def calculate_stress_score(work_hours, meetings_count, after_hours_work, breaks_
     final_score = max(-1.0, min(1.0, score))
     return round(final_score, 2)
 
+#Loading existing burnout dataset
+filepath = "../Dataset/work_from_home_burnout_dataset.csv"
+data = pd.read_csv(filepath)
+data = data.dropna()
 
-print(calculate_nutrition_score(9, 4, 8))
-print(calculate_activity_score(12, 0, 5, 8))
-print(calculate_stress_score(9, 4, 4, 1, 5, 8))
+nutrition_scores = []
+activity_scores = []
+productivity_scores = []
+stress_scores = []
+
+for index, row in data.iterrows():
+    nutrition_score = calculate_nutrition_score(
+        row["work_hours"],
+        row["breaks_taken"],
+        row["sleep_hours"]
+    )
+    activity_score = calculate_activity_score(
+        row["work_hours"],
+        row["breaks_taken"],
+        row["sleep_hours"],
+        row["screen_time_hours"]
+    )
+    productivity_score = calculate_productivity_score(
+        row["task_completion_rate"],
+        row["work_hours"],
+        row["meetings_count"],
+        row["breaks_taken"],
+        row["sleep_hours"],
+    )
+    stress_score = calculate_stress_score(
+        row["work_hours"],
+        row["meetings_count"],
+        row["after_hours_work"],
+        row["breaks_taken"],
+        row["sleep_hours"],
+        row["screen_time_hours"],
+    )
+
+    nutrition_scores.append(nutrition_score)
+    activity_scores.append(activity_score)
+    productivity_scores.append(productivity_score)
+    stress_scores.append(stress_score)
+
+data['nutrition_score'] = nutrition_scores
+data['activity_score'] = activity_scores
+data['productivity_score'] = productivity_scores
+data['stress_score'] = stress_scores
+filepath = "../Dataset/upgraded_wfh_dataset.csv"
+data.to_csv(filepath, index=False)
