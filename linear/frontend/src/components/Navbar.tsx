@@ -3,17 +3,17 @@ import { NavLink } from 'react-router-dom';
 const Navbar: React.FC = () => {
   return (
     <nav className="bottom-nav">
-      <NavLink to="/" end className={({ isActive }) => (isActive ? 'active' : '')}>
+      <NavLink to="/dashboard" className={({ isActive }) => (isActive ? 'active' : '')}>
         <span className="nav-icon">🏠</span>
-        Home
+        Dashboard
       </NavLink>
 
-      <NavLink to="/inbox" className={({ isActive }) => (isActive ? 'active' : '')}>
-        <span className="nav-icon">📬</span>
-        Inbox
+      <NavLink to="/checkin" className={({ isActive }) => (isActive ? 'active' : '')}>
+        <span className="nav-icon">✅</span>
+        Check-in
       </NavLink>
 
-      <NavLink to="/tools" className="fab-link">
+      <NavLink to="/checkin" className="fab-link" tabIndex={-1} aria-hidden="true">
         <span className="fab">＋</span>
       </NavLink>
 
@@ -22,9 +22,9 @@ const Navbar: React.FC = () => {
         History
       </NavLink>
 
-      <NavLink to="/insights" className={({ isActive }) => (isActive ? 'active' : '')}>
-        <span className="nav-icon">📊</span>
-        Insights
+      <NavLink to="/profile" className={({ isActive }) => (isActive ? 'active' : '')}>
+        <span className="nav-icon">👤</span>
+        Profile
       </NavLink>
     </nav>
   );

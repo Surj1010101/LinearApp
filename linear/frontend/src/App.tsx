@@ -1,19 +1,16 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import { AuthProvider } from './context';
 import { Layout, ProtectedRoute } from './components';
-import { Home, Login, Register, Dashboard, CheckIn, Recommendations, Tools, Inbox, History, Insights, NotFound } from './pages';
+import { Home, Login, Register, Dashboard, CheckIn, Recommendations, Tools, Inbox, History, Insights, Profile, NotFound } from './pages';
 
 const App: React.FC = () => (
   <AuthProvider>
     <BrowserRouter>
       <Routes>
         <Route element={<Layout />}>
-          {/* Public tabs */}
+          {/* Public */}
           <Route path="/" element={<Home />} />
           <Route path="/tools" element={<Tools />} />
-          <Route path="/inbox" element={<Inbox />} />
-          <Route path="/history" element={<History />} />
-          <Route path="/insights" element={<Insights />} />
 
           {/* Auth */}
           <Route path="/login" element={<Login />} />
@@ -24,6 +21,10 @@ const App: React.FC = () => (
             <Route path="/dashboard" element={<Dashboard />} />
             <Route path="/checkin" element={<CheckIn />} />
             <Route path="/recommendations" element={<Recommendations />} />
+            <Route path="/history" element={<History />} />
+            <Route path="/insights" element={<Insights />} />
+            <Route path="/inbox" element={<Inbox />} />
+            <Route path="/profile" element={<Profile />} />
           </Route>
 
           {/* Catch-all */}

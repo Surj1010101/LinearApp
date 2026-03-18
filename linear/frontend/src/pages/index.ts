@@ -8,4 +8,5 @@ export { default as Tools } from './Tools';
 export { default as Inbox } from './Inbox';
 export { default as History } from './History';
 export { default as Insights } from './Insights';
+export { default as Profile } from './Profile';
 export { default as NotFound } from './NotFound';
