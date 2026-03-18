@@ -2,6 +2,8 @@ import { useEffect, useState } from 'react';
 import { checkinService } from '../services/checkinService';
 import type { CheckIn } from '../types';
 
+type Period = 'all' | 'week' | 'month';
+
 const moodEmoji = (mood: number) => ['😢', '😕', '😐', '🙂', '😄'][mood - 1] ?? '😐';
 
 const sentimentBadge = (s?: string) => {
@@ -18,19 +20,47 @@ const sentimentBadge = (s?: string) => {
   );
 };
 
-/** History page US-08 (date which the user can filter check-ins with sentiment tags) */
+/** Returns ISO date strings for the start of the given period */
+const periodRange = (period: Period): { from?: string; to?: string } => {
+  if (period === 'all') return {};
+  const now = new Date();
+  const to = now.toISOString().split('T')[0];
+  if (period === 'week') {
+    const from = new Date(now.setDate(now.getDate() - 7)).toISOString().split('T')[0];
+    return { from, to };
+  }
+  // month
+  const from = new Date(now.setDate(now.getDate() - 30)).toISOString().split('T')[0];
+  return { from, to };
+};
+
+/** History page US-08 (date filterable check-ins list with sentiment tags) */
 const History: React.FC = () => {
   const [checkins, setCheckins] = useState<CheckIn[]>([]);
   const [loading, setLoading] = useState(true);
+  const [error, setError] = useState('');
   const [expandedId, setExpandedId] = useState<string | null>(null);
+  const [period, setPeriod] = useState<Period>('all');
+
+  const loadCheckins = (p: Period) => {
+    setLoading(true);
+    setError('');
+    const { from, to } = periodRange(p);
+    checkinService
+      .getAll(from, to)
+      .then(({ data }) => setCheckins(data.data))
+      .catch(() => setError('Could not load check-ins. Please try again.'))
+      .finally(() => setLoading(false));
+  };
 
   useEffect(() => {
-    checkinService
-      .getAll()
-      .then(({ data }) => setCheckins(data.data))
-      .catch(() => { /* BE not ready yet */ })
-      .finally(() => setLoading(false));
+    loadCheckins('all');
   }, []);
+
+  const handlePeriodChange = (p: Period) => {
+    setPeriod(p);
+    loadCheckins(p);
+  };
 
   const toggleExpand = (id: string) => {
     setExpandedId((prev) => (prev === id ? null : id));
@@ -40,6 +70,32 @@ const History: React.FC = () => {
     <div className="gap-16" style={{ paddingTop: '20px' }}>
       <h1>History</h1>
 
+      {/* Period filter */}
+      <div style={{ display: 'flex', gap: '8px' }}>
+        {(['all', 'week', 'month'] as Period[]).map((p) => (
+          <button
+            key={p}
+            onClick={() => handlePeriodChange(p)}
+            style={{
+              flex: 1,
+              padding: '8px 0',
+              borderRadius: '8px',
+              border: '1.5px solid',
+              borderColor: period === p ? 'var(--color-primary)' : 'var(--color-border)',
+              background: period === p ? 'var(--color-primary)' : 'transparent',
+              color: period === p ? '#fff' : 'var(--color-text-secondary)',
+              fontWeight: 600,
+              fontSize: '0.85rem',
+              cursor: 'pointer',
+            }}
+          >
+            {p === 'all' ? 'All Time' : p === 'week' ? 'This Week' : 'This Month'}
+          </button>
+        ))}
+      </div>
+
+      {error && <p className="error-text">{error}</p>}
+
       {loading ? (
         <div className="card">
           <p>Loading your check-ins...</p>
@@ -47,7 +103,7 @@ const History: React.FC = () => {
       ) : checkins.length === 0 ? (
         <div className="card">
           <h2>Check-in Log</h2>
-          <p className="mt-8">No check-ins yet. Complete your first daily check-in to see your history here.</p>
+          <p className="mt-8">No check-ins found for this period. Try a different filter or complete your first daily check-in.</p>
         </div>
       ) : (
         <div className="gap-12">
