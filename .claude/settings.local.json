@@ -1,0 +1,8 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(ls -la \"/c/Users/ss144/OneDrive - St Marys University/personal compsci5007\\(TEAM PROJECT/LinearApp\")",
+      "Bash(ls -la \"/c/Users/ss144/OneDrive - St Marys University/personal compsci5007\\(TEAM PROJECT/LinearApp/linear\")"
+    ]
+  }
+}
