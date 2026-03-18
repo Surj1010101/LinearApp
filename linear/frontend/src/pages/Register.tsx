@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { useAuth } from '../context';
 import { useNavigate, Link } from 'react-router-dom';
+import { authService } from '../services/authService';
 
 type FitnessLevel = 'beginner' | 'intermediate' | 'advanced';
 type WorkPattern = 'remote' | 'hybrid' | 'office';
@@ -54,7 +55,8 @@ const Register: React.FC = () => {
     setError('');
     try {
       await register(name, email, password);
-      /* TODO: this for krithen after backend has profile endpoint, PATCH profile with fitnessLevel, workPattern, goals */
+      // Patch profile with wizard selections now that the user is authenticated
+      await authService.updateProfile({ fitnessLevel, workPattern, goals });
       navigate('/checkin');
     } catch {
       setError('Registration failed. Email may already be in use.');
