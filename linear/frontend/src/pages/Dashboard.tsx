@@ -5,6 +5,7 @@ import MoodChart from '../components/MoodChart';
 import WeeklySummary from '../components/WeeklySummary';
 import DisclaimerBanner from '../components/DisclaimerBanner';
 import { dashboardService } from '../services/dashboardService';
+import { checkinService } from '../services/checkinService';
 import type { DashboardSummary, TrendPoint } from '../types';
 
 /** Dashboard page — US-07 (summary cards, mood chart, greeting) */
@@ -14,6 +15,7 @@ const Dashboard: React.FC = () => {
   const [trendData, setTrendData] = useState<TrendPoint[]>([]);
   const [loadingSummary, setLoadingSummary] = useState(true);
   const [loadingTrend, setLoadingTrend] = useState(true);
+  const [checkedInToday, setCheckedInToday] = useState(false);
 
   /* Greeting based on time of day */
   const hour = new Date().getHours();
@@ -24,6 +26,15 @@ const Dashboard: React.FC = () => {
     month: 'long',
     year: 'numeric',
   });
+
+  /* Check if the user has already checked in today */
+  useEffect(() => {
+    const today = new Date().toISOString().split('T')[0];
+    checkinService
+      .getAll(today, today)
+      .then(({ data }) => setCheckedInToday(data.data.length > 0))
+      .catch(() => { /* non-critical */ });
+  }, []);
 
   /* Fetch summary on mount */
   useEffect(() => {
@@ -62,11 +73,30 @@ const Dashboard: React.FC = () => {
         <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
           <div>
             <h2>Daily Check-in</h2>
-            <p className="mt-8">How are you feeling today?</p>
+            <p className="mt-8">
+              {checkedInToday ? 'Done for today — great job!' : 'How are you feeling today?'}
+            </p>
           </div>
-          <span style={{ fontSize: '2rem' }}>📝</span>
+          <span style={{ fontSize: '2rem' }}>{checkedInToday ? '✅' : '📝'}</span>
         </div>
-        <span className="btn btn-primary text-center" style={{ marginTop: '8px' }}>Start Check-in</span>
+        {checkedInToday ? (
+          <span
+            className="text-center"
+            style={{
+              marginTop: '8px',
+              padding: '10px',
+              borderRadius: 'var(--radius)',
+              background: '#f0fdf4',
+              color: 'var(--color-success)',
+              fontWeight: 600,
+              fontSize: '0.9rem',
+            }}
+          >
+            ✓ Checked in today
+          </span>
+        ) : (
+          <span className="btn btn-primary text-center" style={{ marginTop: '8px' }}>Start Check-in</span>
+        )}
       </Link>
 
       {/* Weekly summary stats */}

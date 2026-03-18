@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import ExerciseCard from '../components/ExerciseCard';
 import NutritionTip from '../components/NutritionTip';
 import ConfidenceBadge from '../components/ConfidenceBadge';
@@ -8,6 +9,7 @@ import type { Recommendation } from '../types';
 
 /** Today's recommendation page US-05, US-06, US-11, US-12 */
 const Recommendations: React.FC = () => {
+  const navigate = useNavigate();
   const [rec, setRec] = useState<Recommendation | null>(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState('');
@@ -65,7 +67,7 @@ const Recommendations: React.FC = () => {
 
           {/* Action buttons */}
           <div style={{ display: 'flex', gap: '12px' }}>
-            <button className="btn btn-primary" style={{ flex: 1 }}>
+            <button className="btn btn-primary" style={{ flex: 1 }} onClick={() => navigate('/dashboard')}>
               Let's do it 💪
             </button>
             <button
