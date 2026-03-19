@@ -1,3 +1,4 @@
+import os
 import pandas as pd
 import random
 
@@ -26,8 +27,6 @@ def calculate_nutrition_score(work_hours, breaks_taken, sleep_hours):
         "breaks_taken": 3,
         "sleep_hours": 3,
     }
-
-    score = 0.0
 
     work_diff = work_hours - optimal["work_hours"]
     if work_diff > 0:
@@ -316,52 +315,55 @@ def calculate_stress_score(work_hours, meetings_count, after_hours_work, breaks_
     final_score = max(-1.0, min(1.0, score))
     return round(final_score, 2)
 
-#Loading existing burnout dataset
-filepath = "../Dataset/work_from_home_burnout_dataset.csv"
-data = pd.read_csv(filepath)
-data = data.dropna()
+if __name__ == "__main__":
+    base_dir = os.path.dirname(os.path.abspath(__file__))
 
-nutrition_scores = []
-activity_scores = []
-productivity_scores = []
-stress_scores = []
+    #Loading existing burnout dataset
+    filepath = os.path.join(base_dir, "..", "Dataset", "work_from_home_burnout_dataset.csv")
+    data = pd.read_csv(filepath)
+    data = data.dropna()
 
-for index, row in data.iterrows():
-    nutrition_score = calculate_nutrition_score(
-        row["work_hours"],
-        row["breaks_taken"],
-        row["sleep_hours"]
-    )
-    activity_score = calculate_activity_score(
-        row["work_hours"],
-        row["breaks_taken"],
-        row["sleep_hours"],
-        row["screen_time_hours"]
-    )
-    productivity_score = calculate_productivity_score(
-        row["task_completion_rate"],
-        row["work_hours"],
-        row["meetings_count"],
-        row["breaks_taken"],
-        row["sleep_hours"],
-    )
-    stress_score = calculate_stress_score(
-        row["work_hours"],
-        row["meetings_count"],
-        row["after_hours_work"],
-        row["breaks_taken"],
-        row["sleep_hours"],
-        row["screen_time_hours"],
-    )
+    nutrition_scores = []
+    activity_scores = []
+    productivity_scores = []
+    stress_scores = []
 
-    nutrition_scores.append(nutrition_score)
-    activity_scores.append(activity_score)
-    productivity_scores.append(productivity_score)
-    stress_scores.append(stress_score)
+    for index, row in data.iterrows():
+        nutrition_score = calculate_nutrition_score(
+            row["work_hours"],
+            row["breaks_taken"],
+            row["sleep_hours"]
+        )
+        activity_score = calculate_activity_score(
+            row["work_hours"],
+            row["breaks_taken"],
+            row["sleep_hours"],
+            row["screen_time_hours"]
+        )
+        productivity_score = calculate_productivity_score(
+            row["task_completion_rate"],
+            row["work_hours"],
+            row["meetings_count"],
+            row["breaks_taken"],
+            row["sleep_hours"],
+        )
+        stress_score = calculate_stress_score(
+            row["work_hours"],
+            row["meetings_count"],
+            row["after_hours_work"],
+            row["breaks_taken"],
+            row["sleep_hours"],
+            row["screen_time_hours"],
+        )
 
-data['nutrition_score'] = nutrition_scores
-data['activity_score'] = activity_scores
-data['productivity_score'] = productivity_scores
-data['stress_score'] = stress_scores
-filepath = "../Dataset/upgraded_wfh_dataset.csv"
-data.to_csv(filepath, index=False)
+        nutrition_scores.append(nutrition_score)
+        activity_scores.append(activity_score)
+        productivity_scores.append(productivity_score)
+        stress_scores.append(stress_score)
+
+    data['nutrition_score'] = nutrition_scores
+    data['activity_score'] = activity_scores
+    data['productivity_score'] = productivity_scores
+    data['stress_score'] = stress_scores
+    filepath = os.path.join(base_dir, "..", "Dataset", "upgraded_wfh_dataset.csv")
+    data.to_csv(filepath, index=False)
