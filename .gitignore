@@ -36,3 +36,10 @@ npm-debug.log*
 
 *storybook.log
 storybook-static
+
+# Python cache
+__pycache__/
+*.pyc
+
+# Databases
+*.db
