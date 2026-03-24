@@ -8,7 +8,7 @@ from datasets import Dataset
 
 #Fetching the dataset for AI tuning
 #filepath = "C:\\Users\danel\PycharmProjects\AI-Training-Model-Linear-App\Dataset\\nlp_fine_tuning.csv"
-filepath = "Dataset\\advanced_synthetic_nlp_dataset.csv"
+filepath = "Dataset\\journal_entries_nlp_dataset.csv"
 data = pd.read_csv(filepath)
 data = data.dropna()
 
@@ -18,20 +18,22 @@ hugging_face_dataset = Dataset.from_pandas(data)
 
 #packing labels into a batch
 def bundle(batch):
-    #combining 6 columns row by row into a list
+    #combining 5 columns row by row into a list
     batch["labels"] = [
-        [b, s, p, e, n, a] for b, s, p, e, n, a in zip(
-            batch["burnout_score"],batch["stress_score"], batch["productivity_score"], batch["engagement_score"], batch["nutrition_score"], batch["activity_score"])
+        [b, n, a, p, s] for b, n, a, p, s in zip(
+            batch["burnout_score"],batch["nutrition_score"], batch["activity_score"], batch["productivity_score"], batch["stress_score"])
     ]
     return batch
 hugging_face_dataset = hugging_face_dataset.map(bundle, batched=True)
+#80/20 train test split
+#hugging_face_dataset = hugging_face_dataset.train_test_split(test_size=0.2, seed=42)
 #Initialising AI
 model_name = "distilbert-base-uncased"
 tokenizer = AutoTokenizer.from_pretrained(model_name)
 #loading model and providing expected labels (1 as it will be the sentiment score)
 #using regression as we are expecting continuous number to be predicted
-#num labels set to 6 instead of previous 1 as inputs increased
-model = AutoModelForSequenceClassification.from_pretrained(model_name, num_labels=6, problem_type="regression")
+#num labels set to 5 instead of previous 1 as inputs increased
+model = AutoModelForSequenceClassification.from_pretrained(model_name, num_labels=5, problem_type="regression")
 
 #Tokenisation rule
 def tokenize(examples):

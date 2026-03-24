@@ -1,9 +1,19 @@
-from transformers import pipeline
+from transformers import pipeline, AutoTokenizer
 import pandas as pd
-
+import textwrap
+import random
 import time
+import torch
+print(torch.cuda.is_available())
 
-journal_generator = pipeline('text-generation', model="TinyLlama/TinyLlama-1.1B-Chat-v1.0", device=0)
+model_name = "TinyLlama/TinyLlama-1.1B-Chat-v1.0"
+tokenizer = AutoTokenizer.from_pretrained(model_name)
+
+tokenizer.padding_side = "left"
+if tokenizer.pad_token is None:
+    tokenizer.pad_token = tokenizer.eos_token
+
+journal_generator = pipeline('text-generation', model=model_name,tokenizer=tokenizer, device=0)
 
 filepath = "../Dataset/upgraded_wfh_dataset.csv"
 data = pd.read_csv(filepath)
@@ -62,41 +72,85 @@ def work_hours_to_word(work_hours):
 
 def generate_journals(row_batch):
     chat_messages = []
+
+    opening_styles = [
+        "Being with a complain or praise about your day.",
+        "Begin with physical sensations like 'My eyes hurt...', 'My back hurts...', 'Feeling Energised...'",
+        "Begin with a though about how fast or slow the day has went.",
+        "Begin by mentioning food, hunger or lunch break",
+        "Begin mentioning you mental wellbeing like 'Feeling Exhausted...', 'Feeling Motivated'"
+        "Begin with an action you are doing right now like 'Staring at my screen', 'Closing my laptop'"
+    ]
+
     for index, row in row_batch.iterrows():
+
         mood = convert_to_mood(row)
-        scenario = f"""Write a realistic 2 sentence journal from someone working from home
-        Here are some good examples:
-        Example 1: I rushed through debugging all morning and forgot to eat anything until late afternoon while barely leaving my chair
+        traits = [
+            mood["nutrition"],
+            mood["activity"],
+            mood["productivity"],
+            mood["stress"],
+            mood["sleep"]
+        ]
+        random.shuffle(traits)
+
+        opening = random.choice(opening_styles)
+
+        scenario = textwrap.dedent(f"""\
+        Write a 2 sentence personal reflection
+        Today you worked {work_hours_to_word(row["work_hours"])}
         
-        Example 2: I wrote clean code in the morning then enjoyed soup and a walk which helped me stay focused
-        
-        Example 3: Couldn't focus on anything, kept snacking, hope things get better tomorrow 
-        
-        Today they worked {work_hours_to_word(row["work_hours"])}
         Write a journal entry for someone who:
-        {mood["nutrition"]}
-        {mood["activity"]}
-        {mood["productivity"]}
-        {mood["stress"]}
-        {mood["sleep"]}
+        {traits[0]}
+        {traits[1]}
+        {traits[2]}
+        {traits[3]}
+        {traits[4]}
         
-        Ensure its written in first person. Be casual and emotionally honest, ensure you only use natural language as a private diary, no number or scores."""
+        STRICT INSTRUCTION:
+        1.{opening}
+        2.Never start the first sentence with the words "I", "Today", "Waking", "Awoke", "As I", "It was" or "My day"
+        3.Be casual and emotionally honest, ensure you only use natural language as a private diary, no number or scores.""")
 
-        chat_messages.append([{"role": "user", "content": scenario}])
+        chat_messages.append([
+            {"role": "system", "content": "You are a creative writer writing highly unique 2 sentence reflections. You must strictly obey the strict instructions and never start journal entries the exact same way."},
+            {"role": "user", "content": scenario}
+        ])
 
 
-    result = journal_generator(chat_messages, max_new_tokens = 160, num_return_sequences = 1, batch_size=len(chat_messages))
+    result = journal_generator(chat_messages,
+                               max_new_tokens = 140,
+                               num_return_sequences = 1,
+                               batch_size=len(chat_messages),
+                               do_sample = True,
+                               temperature = 0.75,
+                               top_p = 0.9,
+                               repetition_penalty = 1.2,
+                               )
     journal_entries = []
 
-    for result in result:
-        entry = result[0]['generated_text'][1]['content']
-        journal_entries.append(entry)
+    #cleanup
+
+    for res in result:
+        entry = res[0]['generated_text'][2]['content']
+        clean_entry = entry.strip().replace('\n', ' ')
+
+        #2 sentence limit
+        sentences = [s.strip() for s in clean_entry.split('.') if s.strip()]
+        two_sentences = sentences[:2]
+
+        if two_sentences:
+            final_entry = '. '.join(two_sentences) + '.'
+        else:
+            final_entry = clean_entry
+
+        journal_entries.append(final_entry)
 
     return journal_entries
 
 test_mode = False
 num_test_examples = 5
-batch_size = 8
+batch_size = 16
 
 if test_mode:
     test_data = data.sample(n=num_test_examples, random_state=30)
@@ -120,28 +174,32 @@ if test_mode:
         print("="*50)
 
 else:
-    results = []
+    path = "../Dataset/journal_entries_nlp_dataset.csv"
 
     for i in range(0, len(data), batch_size):
         batch = data.iloc[i:i + batch_size]
         print(f"Processing rows {i} out of {len(data)}")
         #slices data to match the batch
         journal_entry = generate_journals(batch)
+        batch_results = []
         for j, (index, row) in enumerate(batch.iterrows()):
             results_row = {
-                "journal_entry": journal_entry,
+                "journal_entry": journal_entry[j],
                 "burnout_score": row["burnout_score"],
                 "nutrition_score": row["nutrition_score"],
                 "activity_score": row["activity_score"],
                 "productivity_score": row["productivity_score"],
                 "stress_score": row["stress_score"],
             }
-            results.append(results_row)
+            batch_results.append(results_row)
 
-    results = pd.DataFrame(results)
+        batch = pd.DataFrame(batch_results)
 
-    path = "Dataset\\journal_entries_nlp_dataset.csv"
-    results.to_csv(path, index=False)
+        write_header = True if i == 0 else False
+
+        batch.to_csv(path, mode = 'a', header=write_header, index=False)
+        print(f"Batch saved")
+
 
     print(f"Journal entries saved to {path}")
 
