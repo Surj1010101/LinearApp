@@ -12,7 +12,7 @@ const Register: React.FC = () => {
   const { register } = useAuth();
   const navigate = useNavigate();
 
-  /* Step tracking: 0=account, 1=fitness, 2=work pattern, 3=goals */
+  /* Step tracking: 0=account, 1=fitness, 2=work pattern, 3=goals, 4=confirmation */
   const [step, setStep] = useState(0);
 
   /* Step 0 — account fields */
@@ -57,7 +57,7 @@ const Register: React.FC = () => {
       await register(name, email, password);
       // Patch profile with wizard selections now that the user is authenticated
       await authService.updateProfile({ fitnessLevel, workPattern, goals });
-      navigate('/checkin');
+      setStep(4); // show confirmation screen
     } catch {
       setError('Registration failed. Email may already be in use.');
       setStep(0);
@@ -76,6 +76,31 @@ const Register: React.FC = () => {
       ))}
     </div>
   );
+
+  /* Step 4 — Confirmation screen */
+  if (step === 4) {
+    return (
+      <div className="gap-16 text-center" style={{ paddingTop: '60px' }}>
+        <div style={{ fontSize: '4rem' }}>🎉</div>
+        <h1>You're all set, {name}!</h1>
+        <p className="mt-8">Your profile is ready. Let's start your first wellbeing check-in.</p>
+        <div className="card gap-12" style={{ textAlign: 'left' }}>
+          <p style={{ fontSize: '0.9rem', color: 'var(--color-text)' }}>
+            Here's what Linear will do for you:
+          </p>
+          <ul style={{ paddingLeft: '20px', display: 'flex', flexDirection: 'column', gap: '6px', color: 'var(--color-text-secondary)', fontSize: '0.9rem' }}>
+            <li>Track your daily mood, energy &amp; stress</li>
+            <li>Generate personalised exercise recommendations</li>
+            <li>Provide nutrition guidance for your wellbeing state</li>
+            <li>Show your trends over time on the dashboard</li>
+          </ul>
+        </div>
+        <button className="btn btn-primary" onClick={() => navigate('/checkin')}>
+          Start My First Check-in →
+        </button>
+      </div>
+    );
+  }
 
   return (
     <div className="gap-16" style={{ paddingTop: '24px' }}>

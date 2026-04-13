@@ -45,18 +45,18 @@ const Dashboard: React.FC = () => {
       .finally(() => setLoadingSummary(false));
   }, []);
 
-  /* Fetch trend data */
-  const fetchTrend = (days: number = 7) => {
+  /* Fetch trend data — called by MoodChart when user changes period or metric */
+  const fetchTrend = (days: number = 7, metric: 'mood' | 'energy' | 'stress' = 'mood') => {
     setLoadingTrend(true);
     dashboardService
-      .getTrends('mood', days)
+      .getTrends(metric, days)
       .then(({ data }) => setTrendData(data.data))
       .catch(() => { /* BE not ready yet */ })
       .finally(() => setLoadingTrend(false));
   };
 
   useEffect(() => {
-    fetchTrend(7);
+    fetchTrend(7, 'mood');
   }, []);
 
   return (
@@ -102,19 +102,33 @@ const Dashboard: React.FC = () => {
       {/* Weekly summary stats */}
       <WeeklySummary summary={summary} loading={loadingSummary} />
 
-      {/* Mood trend chart with 7/14/30 day toggle */}
+      {/* Trend chart — supports mood / energy / stress metric toggle */}
       <MoodChart data={trendData} loading={loadingTrend} onPeriodChange={fetchTrend} />
 
-      {/* AI Recommendations teaser */}
-      <Link to="/recommendations" className="card gap-12" style={{ textDecoration: 'none', color: 'inherit' }}>
-        <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-          <div>
-            <h2>AI Recommendations</h2>
-            <p className="mt-8">View your personalised exercise and nutrition plan.</p>
+      {/* Quick-action cards row */}
+      <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '12px' }}>
+        <Link
+          to="/recommendations"
+          style={{ textDecoration: 'none', color: 'inherit' }}
+        >
+          <div className="card" style={{ height: '100%', display: 'flex', flexDirection: 'column', gap: '8px' }}>
+            <span style={{ fontSize: '1.8rem' }}>🎯</span>
+            <h3>Today's Plan</h3>
+            <p style={{ fontSize: '0.8rem' }}>Exercise &amp; nutrition</p>
           </div>
-          <span style={{ fontSize: '2rem' }}>🤖</span>
-        </div>
-      </Link>
+        </Link>
+
+        <Link
+          to="/insights"
+          style={{ textDecoration: 'none', color: 'inherit' }}
+        >
+          <div className="card" style={{ height: '100%', display: 'flex', flexDirection: 'column', gap: '8px' }}>
+            <span style={{ fontSize: '1.8rem' }}>✨</span>
+            <h3>Insights</h3>
+            <p style={{ fontSize: '0.8rem' }}>AI wellbeing analysis</p>
+          </div>
+        </Link>
+      </div>
 
       <DisclaimerBanner compact />
     </div>

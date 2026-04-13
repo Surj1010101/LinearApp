@@ -1,6 +1,20 @@
-import { Link } from 'react-router-dom';
+import { useEffect } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
+import { useAuth } from '../context';
 
 const Home: React.FC = () => {
+  const { isAuthenticated, loading } = useAuth();
+  const navigate = useNavigate();
+
+  /* Redirect authenticated users straight to their dashboard */
+  useEffect(() => {
+    if (!loading && isAuthenticated) {
+      navigate('/dashboard', { replace: true });
+    }
+  }, [isAuthenticated, loading, navigate]);
+
+  if (loading) return null;
+
   return (
     <div className="gap-16" style={{ paddingTop: '40px' }}>
       <div className="text-center">
@@ -24,6 +38,10 @@ const Home: React.FC = () => {
         <Link to="/register" className="btn btn-primary text-center">Get Started</Link>
         <Link to="/login" className="btn btn-secondary text-center">I already have an account</Link>
       </div>
+
+      <p className="text-center" style={{ fontSize: '0.78rem', color: 'var(--color-text-secondary)' }}>
+        Inspired by the PROSPERH initiative · Not a medical service
+      </p>
     </div>
   );
 };

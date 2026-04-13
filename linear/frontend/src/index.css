@@ -543,6 +543,35 @@ a {
   color: var(--color-text-secondary);
 }
 
+/* Metric selector row inside chart */
+.mood-chart__metrics {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 12px;
+}
+
+.mood-chart__metric-btn {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  padding: 6px 0;
+  border-radius: 8px;
+  border: 1.5px solid var(--color-border);
+  background: transparent;
+  color: var(--color-text-secondary);
+  font-size: 0.8rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: border-color 0.15s, color 0.15s;
+}
+
+.mood-chart__metric-btn--active {
+  background: var(--color-bg);
+  font-weight: 700;
+}
+
 /* Weekly summary */
 .weekly-summary__grid {
   display: grid;
