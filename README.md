@@ -12,7 +12,21 @@ Install these before anything else:
 
 ---
 
-## Setup & Run
+## Quick Start (One Command)
+
+> Make sure you've done the first-time setup below before using this.
+
+Double-click `start.bat` — or run in terminal:
+
+```bat
+start.bat
+```
+
+This opens two windows automatically: one for the backend, one for the frontend.
+
+---
+
+## First-Time Setup + Manual Run
 
 You need **two terminals open at the same time** — one for the backend, one for the frontend.
 

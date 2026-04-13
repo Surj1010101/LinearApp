@@ -52,3 +52,17 @@ class Recommendation(Base):
     reason = Column(Text)
 
     created_at = Column(DateTime(timezone=True), server_default=func.now())
+
+
+class Insight(Base):
+
+    __tablename__ = "insights"
+
+    id = Column(Integer, primary_key=True)
+
+    user_id = Column(Integer, ForeignKey("users.id"))
+
+    summary = Column(Text)
+    suggestions = Column(Text)
+
+    created_at = Column(DateTime(timezone=True), server_default=func.now())

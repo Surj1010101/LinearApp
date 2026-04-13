@@ -2,7 +2,7 @@ from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 
 from .database import Base, engine
-from .routes import auth, checkin, dashboard, recommendations, users
+from .routes import auth, checkin, dashboard, insights, recommendations, users
 
 Base.metadata.create_all(bind=engine)
 
@@ -19,6 +19,7 @@ app.add_middleware(
 app.include_router(auth.router, prefix="/api/auth")
 app.include_router(checkin.router, prefix="/api")
 app.include_router(dashboard.router, prefix="/api")
+app.include_router(insights.router, prefix="/api")
 app.include_router(recommendations.router, prefix="/api")
 app.include_router(users.router, prefix="/api")
 
