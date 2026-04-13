@@ -21,12 +21,21 @@ const ExerciseCard: React.FC<ExerciseCardProps> = ({ recommendation }) => {
     rest: 'Rest Day',
   };
 
+  const categoryIcon: Record<string, string> = {
+    stretching:       '🤸',
+    light_cardio:     '🚶',
+    moderate:         '🏃',
+    strength:         '🏋️',
+    yoga_mindfulness: '🧘',
+    rest:             '😴',
+  };
+
   return (
     <div className="exercise-card card">
-      {/* Image placeholder */}
+      {/* Category icon */}
       <div className="exercise-card__image">
         <span style={{ fontSize: '2.5rem' }}>
-          {recommendation.exerciseCategory === 'rest' ? '😴' : '🏋️'}
+          {categoryIcon[recommendation.exerciseCategory] ?? '🏃'}
         </span>
       </div>
 
