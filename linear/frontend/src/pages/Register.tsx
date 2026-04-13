@@ -9,7 +9,7 @@ const goalOptions = ['Reduce stress', 'Get fitter', 'Eat better', 'Manage burnou
 
 /** Multistep registration: account → fitness level → work pattern → goals (FR-01, US-01) */
 const Register: React.FC = () => {
-  const { register } = useAuth();
+  const { register, updateUser } = useAuth();
   const navigate = useNavigate();
 
   /* Step tracking: 0=account, 1=fitness, 2=work pattern, 3=goals, 4=confirmation */
@@ -53,17 +53,32 @@ const Register: React.FC = () => {
   const handleFinalSubmit = async () => {
     setSubmitting(true);
     setError('');
+
+    // Step 1: create the account — this must succeed before anything else
     try {
       await register(name, email, password);
-      // Patch profile with wizard selections now that the user is authenticated
-      await authService.updateProfile({ fitnessLevel, workPattern, goals });
-      setStep(4); // show confirmation screen
-    } catch {
-      setError('Registration failed. Email may already be in use.');
-      setStep(0);
-    } finally {
+    } catch (err: unknown) {
+      const msg =
+        (err as { response?: { data?: { detail?: string } } })?.response?.data?.detail ?? '';
+      setError(
+        msg.toLowerCase().includes('already')
+          ? 'That email is already registered. Try logging in instead.'
+          : 'Registration failed. Please check your details and try again.',
+      );
       setSubmitting(false);
+      return; // stop here — don't advance steps
     }
+
+    // Step 2: save profile wizard selections (best-effort — user can always edit in Profile)
+    try {
+      const { data } = await authService.updateProfile({ fitnessLevel, workPattern, goals });
+      updateUser(data.data);
+    } catch {
+      // profile update failed silently — not critical, user can fix it on Profile page
+    }
+
+    setSubmitting(false);
+    setStep(4); // show confirmation screen
   };
 
   const stepIndicator = (
