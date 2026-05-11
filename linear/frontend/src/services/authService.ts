@@ -34,4 +34,12 @@ export const authService = {
 
   updateProfile: (payload: UpdateProfilePayload) =>
     api.put<ApiResponse<User>>('/users/me', payload),
+
+  /** GDPR — download every record we hold for the user as a JSON blob */
+  exportData: () =>
+    api.get<Blob>('/users/me/export', { responseType: 'blob' }),
+
+  /** GDPR right-to-erasure — permanently delete the account */
+  deleteAccount: () =>
+    api.delete<ApiResponse<{ deleted: boolean }>>('/users/me'),
 };

@@ -21,6 +21,9 @@ const Profile: React.FC = () => {
   const [saving, setSaving] = useState(false);
   const [saved, setSaved] = useState(false);
   const [error, setError] = useState('');
+  const [exporting, setExporting] = useState(false);
+  const [deleting, setDeleting] = useState(false);
+  const [confirmDelete, setConfirmDelete] = useState(false);
 
   const toggleGoal = (g: string) =>
     setGoals((prev) => (prev.includes(g) ? prev.filter((x) => x !== g) : [...prev, g]));
@@ -50,6 +53,44 @@ const Profile: React.FC = () => {
   const handleLogout = () => {
     logout();
     navigate('/');
+  };
+
+  const handleExport = async () => {
+    setExporting(true);
+    setError('');
+    try {
+      const { data } = await authService.exportData();
+      const blob = data instanceof Blob ? data : new Blob([JSON.stringify(data)], { type: 'application/json' });
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = 'linear-data-export.json';
+      document.body.appendChild(a);
+      a.click();
+      a.remove();
+      URL.revokeObjectURL(url);
+    } catch {
+      setError('Could not export your data. Please try again.');
+    } finally {
+      setExporting(false);
+    }
+  };
+
+  const handleDelete = async () => {
+    if (!confirmDelete) {
+      setConfirmDelete(true);
+      return;
+    }
+    setDeleting(true);
+    setError('');
+    try {
+      await authService.deleteAccount();
+      logout();
+      navigate('/');
+    } catch {
+      setError('Could not delete your account. Please try again.');
+      setDeleting(false);
+    }
   };
 
   return (
@@ -162,6 +203,43 @@ const Profile: React.FC = () => {
         <button className="btn btn-secondary" onClick={handleLogout}>
           Log Out
         </button>
+      </div>
+
+      {/* Privacy & Data (GDPR) */}
+      <div className="card gap-12">
+        <h2>🔒 Privacy & Data</h2>
+        <p style={{ fontSize: '0.85rem' }}>
+          Your check-in text is analysed on this server using a locally-hosted sentiment model.
+          Insights are summarised by an AI service only when you press <em>Generate New Insight</em> — never automatically.
+          You have the right to download or delete every record we hold (GDPR Art. 15 & 17).
+        </p>
+
+        <button className="btn btn-secondary" onClick={handleExport} disabled={exporting}>
+          {exporting ? 'Preparing download…' : '⬇️ Download my data (JSON)'}
+        </button>
+
+        <button
+          className="btn"
+          style={{
+            background: confirmDelete ? '#ef4444' : 'transparent',
+            color: confirmDelete ? '#fff' : '#ef4444',
+            border: '1.5px solid #ef4444',
+            fontWeight: 600,
+          }}
+          onClick={handleDelete}
+          disabled={deleting}
+        >
+          {deleting
+            ? 'Deleting…'
+            : confirmDelete
+              ? '⚠ Tap again to confirm permanent deletion'
+              : '🗑️ Delete my account & all data'}
+        </button>
+        {confirmDelete && !deleting && (
+          <button className="btn btn-secondary" onClick={() => setConfirmDelete(false)}>
+            Cancel
+          </button>
+        )}
       </div>
 
       {/* Ethics / about */}

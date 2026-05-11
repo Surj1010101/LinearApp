@@ -7,6 +7,9 @@ export interface CreateCheckInPayload {
   energy: number;
   stress: number;
   hoursWorked: number;
+  screenTime?: number;
+  waterGlasses?: number;
+  mealsEaten?: number;
   setting: 'home' | 'office';
   freeText?: string;
 }

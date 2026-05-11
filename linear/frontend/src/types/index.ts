@@ -30,6 +30,9 @@ export interface CheckIn {
   energy: number;
   stress: number;
   hoursWorked: number;
+  screenTime?: number;
+  waterGlasses?: number;
+  mealsEaten?: number;
   setting: 'home' | 'office';
   freeText?: string;
   sentiment?: Sentiment;
@@ -99,6 +102,7 @@ export interface Insight {
   userId: string;
   summary: string;
   suggestions: string[];
+  source: 'ai' | 'local';
   generatedAt: string;
 }
 
