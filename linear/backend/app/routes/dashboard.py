@@ -4,7 +4,7 @@ from sqlalchemy.orm import Session
 from datetime import datetime, timedelta
 
 from ..deps import get_db, get_current_user
-from ..models import CheckIn, User
+from ..models import CheckIn, Recommendation, User
 
 router = APIRouter()
 
@@ -22,6 +22,12 @@ def get_summary(
         db.query(CheckIn)
         .filter(CheckIn.user_id == current_user.id, CheckIn.created_at >= since)
         .all()
+    )
+
+    exercise_count = (
+        db.query(Recommendation)
+        .filter(Recommendation.user_id == current_user.id, Recommendation.created_at >= since)
+        .count()
     )
 
     count = len(checkins)
@@ -44,7 +50,7 @@ def get_summary(
             "moodAvg": mood_avg,
             "energyAvg": energy_avg,
             "stressAvg": stress_avg,
-            "exerciseCount": 0,
+            "exerciseCount": exercise_count,
             "streak": streak,
             "checkinCount": count,
         },

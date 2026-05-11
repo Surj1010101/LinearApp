@@ -42,15 +42,18 @@ const History: React.FC = () => {
   const [expandedId, setExpandedId] = useState<string | null>(null);
   const [period, setPeriod] = useState<Period>('all');
 
-  const loadCheckins = (p: Period) => {
+  const loadCheckins = async (p: Period) => {
     setLoading(true);
     setError('');
     const { from, to } = periodRange(p);
-    checkinService
-      .getAll(from, to)
-      .then(({ data }) => setCheckins(data.data))
-      .catch(() => setError('Could not load check-ins. Please try again.'))
-      .finally(() => setLoading(false));
+    try {
+      const { data } = await checkinService.getAll(from, to);
+      setCheckins(data.data);
+    } catch {
+      setError('Could not load check-ins. Please try again.');
+    } finally {
+      setLoading(false);
+    }
   };
 
   useEffect(() => {
@@ -144,6 +147,9 @@ const History: React.FC = () => {
                       <span>Energy: {c.energy}/5</span>
                       <span>Stress: {c.stress}/5</span>
                       <span>Hours: {c.hoursWorked}h</span>
+                      {c.screenTime != null && <span>📱 Screen: {c.screenTime}h</span>}
+                      {c.waterGlasses != null && <span>💧 Water: {c.waterGlasses}</span>}
+                      {c.mealsEaten != null && <span>🍽️ Meals: {c.mealsEaten}</span>}
                     </div>
                     {c.freeText && (
                       <p className="mt-8" style={{ fontStyle: 'italic', color: 'var(--color-text-secondary)' }}>
