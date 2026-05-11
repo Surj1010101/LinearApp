@@ -1,4 +1,4 @@
-from sqlalchemy import Column, Integer, String, Text, DateTime, ForeignKey
+from sqlalchemy import Column, Integer, Float, String, Text, DateTime, ForeignKey
 from sqlalchemy.sql import func
 from .database import Base
 
@@ -32,9 +32,15 @@ class CheckIn(Base):
     stress = Column(Integer)
 
     hours_worked = Column(Integer)
+    screen_time = Column(Integer)
+    water_glasses = Column(Integer)
+    meals_eaten = Column(Integer)
+    setting = Column(String, default="home")
 
     free_text = Column(Text)
     sentiment = Column(String)
+    sentiment_score = Column(Float)
+    keywords = Column(Text)
 
     created_at = Column(DateTime(timezone=True), server_default=func.now())
 
@@ -64,5 +70,6 @@ class Insight(Base):
 
     summary = Column(Text)
     suggestions = Column(Text)
+    source = Column(String, default="local")
 
     created_at = Column(DateTime(timezone=True), server_default=func.now())
