@@ -5,15 +5,15 @@ import random
 import time
 import torch
 print(torch.cuda.is_available())
-
-model_name = "TinyLlama/TinyLlama-1.1B-Chat-v1.0"
+#model_name = "TinyLlama/TinyLlama-1.1B-Chat-v1.0"
+model_name = "Qwen/Qwen2-1.5B-Instruct"
 tokenizer = AutoTokenizer.from_pretrained(model_name)
 
 tokenizer.padding_side = "left"
 if tokenizer.pad_token is None:
     tokenizer.pad_token = tokenizer.eos_token
 
-journal_generator = pipeline('text-generation', model=model_name,tokenizer=tokenizer, device=0)
+journal_generator = pipeline('text-generation', model=model_name,tokenizer=tokenizer, device=0, dtype=torch.float16)
 
 filepath = "../Dataset/upgraded_wfh_dataset.csv"
 data = pd.read_csv(filepath)
@@ -78,12 +78,11 @@ def generate_journals(row_batch):
         "Begin with physical sensations like 'My eyes hurt...', 'My back hurts...', 'Feeling Energised...'",
         "Begin with a though about how fast or slow the day has went.",
         "Begin by mentioning food, hunger or lunch break",
-        "Begin mentioning you mental wellbeing like 'Feeling Exhausted...', 'Feeling Motivated'"
+        "Begin mentioning your mental wellbeing like 'Feeling Exhausted...', 'Feeling Motivated'",
         "Begin with an action you are doing right now like 'Staring at my screen', 'Closing my laptop'"
     ]
 
     for index, row in row_batch.iterrows():
-
         mood = convert_to_mood(row)
         traits = [
             mood["nutrition"],
@@ -93,6 +92,21 @@ def generate_journals(row_batch):
             mood["sleep"]
         ]
         random.shuffle(traits)
+
+        scores = {
+            "nutrition": row["nutrition_score"],
+            "activity": row["activity_score"],
+            "productivity": row["productivity_score"],
+            "stress": row["stress_score"],
+        }
+
+        #Prioritising dominant traits
+        dominant_trait = max(scores, key=lambda k: abs(scores[k]))
+        dominant_value = scores[dominant_trait]
+
+        feeling = "great" if dominant_value > 0 else "bad"
+        dominant_trait_instruction = f"Make this entry focused on your {dominant_trait} being {feeling}. Briefly include the other facts."
+
 
         opening = random.choice(opening_styles)
 
@@ -108,9 +122,10 @@ def generate_journals(row_batch):
         {traits[4]}
         
         STRICT INSTRUCTION:
-        1.{opening}
-        2.Never start the first sentence with the words "I", "Today", "Waking", "Awoke", "As I", "It was" or "My day"
-        3.Be casual and emotionally honest, ensure you only use natural language as a private diary, no number or scores.""")
+        1. {opening}
+        2. {dominant_trait_instruction}
+        3.Never start the first sentence with the words "I", "Today", "Waking", "Awoke", "As I", "It was" or "My day"
+        4.Be casual and emotionally honest, ensure you only use natural language as a private diary, no number or scores.""")
 
         chat_messages.append([
             {"role": "system", "content": "You are a creative writer writing highly unique 2 sentence reflections. You must strictly obey the strict instructions and never start journal entries the exact same way."},
@@ -174,7 +189,7 @@ if test_mode:
         print("="*50)
 
 else:
-    path = "../Dataset/journal_entries_nlp_dataset.csv"
+    path = "../Dataset/new_journal_entries_nlp_dataset.csv"
 
     for i in range(0, len(data), batch_size):
         batch = data.iloc[i:i + batch_size]

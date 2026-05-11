@@ -11,6 +11,7 @@ from datasets import Dataset
 filepath = "Dataset\\journal_entries_nlp_dataset.csv"
 data = pd.read_csv(filepath)
 data = data.dropna()
+data["burnout_score"] = data["burnout_score"] / 100.0
 
 hugging_face_dataset = Dataset.from_pandas(data)
 #Renaming column sentiment score to label so it can be found by the ai
@@ -45,8 +46,8 @@ train_dataset = tokenized_dataset
 #set training parameters
 training_args = TrainingArguments(
     output_dir='./results',
-    num_train_epochs=3,
-    per_device_train_batch_size=2,
+    num_train_epochs=10,
+    per_device_train_batch_size=8,
 )
 #create the trainer
 trainer = Trainer(
