@@ -1,13 +1,16 @@
 # Dependencies
 node_modules/
+venv/
+.venv/
+linear/backend/venv/
 
 # Build output
 dist/
 build/
 
 # Environment variables
-.env   
-.env.local                      ///never ever please commit local or any env files dont be dumb
+.env
+.env.local
 .env.*.local
 
 # IDE / Editor
@@ -27,6 +30,10 @@ desktop.ini
 # Logs
 *.log
 npm-debug.log*
+
+# Python cache
+__pycache__/
+*.py[cod]
 
 # TypeScript cache
 *.tsbuildinfo
