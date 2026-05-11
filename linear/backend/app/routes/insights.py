@@ -4,6 +4,7 @@ from sqlalchemy.orm import Session
 
 from ..deps import get_db, get_current_user
 from ..models import CheckIn, Insight, User
+from ..services.ai_insights import generate_ai_insight, is_ai_enabled
 
 router = APIRouter()
 
@@ -15,11 +16,12 @@ def _insight_dict(insight: Insight) -> dict:
         "userId": str(insight.user_id),
         "summary": insight.summary,
         "suggestions": suggestions,
+        "source": insight.source or "local",
         "generatedAt": insight.created_at.isoformat() if insight.created_at else datetime.utcnow().isoformat(),
     }
 
 
-def _generate_insight(checkins: list[CheckIn]) -> tuple[str, list[str]]:
+def _generate_rule_based(checkins: list[CheckIn]) -> tuple[str, list[str]]:
     count = len(checkins)
     mood_avg = sum(c.mood for c in checkins) / count
     energy_avg = sum(c.energy for c in checkins) / count
@@ -51,6 +53,11 @@ def _generate_insight(checkins: list[CheckIn]) -> tuple[str, list[str]]:
 
     suggestions.append("Log daily check-ins at a similar time to improve recommendation accuracy.")
     return summary, suggestions[:3]
+
+
+@router.get("/insights/status")
+def insights_status():
+    return {"success": True, "data": {"aiEnabled": is_ai_enabled()}}
 
 
 @router.get("/insights")
@@ -87,12 +94,19 @@ def generate_insight(
             detail="Need at least 3 recent check-ins to generate an insight.",
         )
 
-    summary, suggestions = _generate_insight(checkins)
+    ai_result = generate_ai_insight(checkins)
+    if ai_result:
+        summary, suggestions = ai_result
+        source = "ai"
+    else:
+        summary, suggestions = _generate_rule_based(checkins)
+        source = "local"
 
     insight = Insight(
         user_id=current_user.id,
         summary=summary,
         suggestions="\n".join(suggestions),
+        source=source,
     )
     db.add(insight)
     db.commit()

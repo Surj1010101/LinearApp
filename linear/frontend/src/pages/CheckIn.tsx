@@ -12,6 +12,9 @@ const CheckIn: React.FC = () => {
   const [energy, setEnergy] = useState(3);
   const [stress, setStress] = useState(3);
   const [hoursWorked, setHoursWorked] = useState<number>(8);
+  const [screenTime, setScreenTime] = useState<number>(6);
+  const [waterGlasses, setWaterGlasses] = useState<number>(4);
+  const [mealsEaten, setMealsEaten] = useState<number>(3);
   const [setting, setSetting] = useState<'home' | 'office'>('home');
   const [freeText, setFreeText] = useState('');
   const [submitting, setSubmitting] = useState(false);
@@ -33,6 +36,9 @@ const CheckIn: React.FC = () => {
         energy,
         stress,
         hoursWorked,
+        screenTime,
+        waterGlasses,
+        mealsEaten,
         setting,
         freeText: freeText.trim() || undefined,
       });
@@ -125,6 +131,46 @@ const CheckIn: React.FC = () => {
             value={hoursWorked}
             onChange={(e) => setHoursWorked(Number(e.target.value))}
           />
+        </div>
+
+        {/* Screen time (hybrid worker digital fatigue) */}
+        <div className="input-group">
+          <label htmlFor="screenTime">📱 Estimated screen time (hours)</label>
+          <input
+            id="screenTime"
+            type="number"
+            min={0}
+            max={24}
+            step={0.5}
+            value={screenTime}
+            onChange={(e) => setScreenTime(Number(e.target.value))}
+          />
+        </div>
+
+        {/* Hydration + meals — two side-by-side counters */}
+        <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '12px' }}>
+          <div className="input-group">
+            <label htmlFor="waterGlasses">💧 Water (glasses)</label>
+            <input
+              id="waterGlasses"
+              type="number"
+              min={0}
+              max={20}
+              value={waterGlasses}
+              onChange={(e) => setWaterGlasses(Number(e.target.value))}
+            />
+          </div>
+          <div className="input-group">
+            <label htmlFor="mealsEaten">🍽️ Meals eaten</label>
+            <input
+              id="mealsEaten"
+              type="number"
+              min={0}
+              max={10}
+              value={mealsEaten}
+              onChange={(e) => setMealsEaten(Number(e.target.value))}
+            />
+          </div>
         </div>
 
         {/* Home / Office toggle */}

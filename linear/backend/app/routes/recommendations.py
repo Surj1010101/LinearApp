@@ -55,9 +55,10 @@ def _build_rec(user: User, db: Session) -> dict:
     mood = latest.mood if latest else 3
     energy = latest.energy if latest else 3
     stress = latest.stress if latest else 3
+    screen_time = latest.screen_time if latest else None
     fitness = user.fitness_level or "beginner"
 
-    exercise_key = generate_recommendation(mood, energy, stress, fitness)
+    exercise_key = generate_recommendation(mood, energy, stress, fitness, screen_time)
     meta = EXERCISE_META.get(exercise_key, EXERCISE_META["light cardio"])
 
     rec = Recommendation(

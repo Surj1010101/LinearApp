@@ -7,4 +7,7 @@ export const insightService = {
 
   /**Fetch previous insights */
   getAll: () => api.get<ApiResponse<Insight[]>>('/insights'),
+
+  /** Check whether the backend has a Claude API key configured */
+  status: () => api.get<ApiResponse<{ aiEnabled: boolean }>>('/insights/status'),
 };
