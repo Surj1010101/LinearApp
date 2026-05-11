@@ -38,21 +38,31 @@ const Dashboard: React.FC = () => {
 
   /* Fetch summary on mount */
   useEffect(() => {
-    dashboardService
-      .getSummary()
-      .then(({ data }) => setSummary(data.data))
-      .catch(() => { /* BE not ready yet */ })
-      .finally(() => setLoadingSummary(false));
+    const loadSummary = async () => {
+      try {
+        const { data } = await dashboardService.getSummary();
+        setSummary(data.data);
+      } catch {
+        /* BE not ready yet */
+      } finally {
+        setLoadingSummary(false);
+      }
+    };
+
+    loadSummary();
   }, []);
 
   /* Fetch trend data — called by MoodChart when user changes period or metric */
-  const fetchTrend = (days: number = 7, metric: 'mood' | 'energy' | 'stress' = 'mood') => {
+  const fetchTrend = async (days: number = 7, metric: 'mood' | 'energy' | 'stress' = 'mood') => {
     setLoadingTrend(true);
-    dashboardService
-      .getTrends(metric, days)
-      .then(({ data }) => setTrendData(data.data))
-      .catch(() => { /* BE not ready yet */ })
-      .finally(() => setLoadingTrend(false));
+    try {
+      const { data } = await dashboardService.getTrends(metric, days);
+      setTrendData(data.data);
+    } catch {
+      /* BE not ready yet */
+    } finally {
+      setLoadingTrend(false);
+    }
   };
 
   useEffect(() => {
