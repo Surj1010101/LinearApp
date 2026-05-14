@@ -38,6 +38,38 @@ The first run may take a few minutes because it creates the backend virtual envi
 - Backend API: http://localhost:8000
 - Frontend app: http://localhost:3000
 
+## Environment Variables
+
+The backend reads its configuration and secrets from a file at
+`linear/backend/.env`. This file is **private** — it holds credentials
+(the auth signing key, API keys) and must **never** be committed or shared.
+
+- `.env` is listed in `.gitignore`, so git will not track it. Do not force-add it.
+- Never paste `.env` contents into chats, screenshots, issues, or commits.
+- `.env.example` is the **safe, committed template** — it lists every
+  variable name with blank or placeholder values, so teammates know what
+  they need without exposing any real secrets.
+- Each person/computer keeps their own `.env` locally. Secrets are not
+  copied between machines — generate or obtain your own.
+
+### Setup
+
+Copy the template, then fill in the values:
+
+| Variable         | Required | Purpose                                            |
+|------------------|----------|----------------------------------------------------|
+| `SECRET_KEY`     | Yes      | Signs auth tokens. The backend won't start without it. |
+| `GOOGLE_API_KEY` | No       | Enables AI insights; falls back to local analysis if unset. |
+
+Generate a unique `SECRET_KEY`:
+
+```powershell
+python -c "import secrets; print(secrets.token_urlsafe(48))"
+```
+
+Paste the result into `linear/backend/.env` as `SECRET_KEY=...`. If it's
+missing, the backend stops with a clear error telling you to set it.
+
 ## Optional — Enable AI Insights (free)
 
 Insights work out of the box using a local rule-based summary. To upgrade to conversational, AI-generated insights, the app uses **Google Gemini Flash** — it has a genuine free tier with no billing setup required.
