@@ -35,6 +35,9 @@ npm-debug.log*
 __pycache__/
 *.py[cod]
 
+# Databases
+*.db
+
 # TypeScript cache
 *.tsbuildinfo
 
