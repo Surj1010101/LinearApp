@@ -1,3 +1,5 @@
+import os
+
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from sqlalchemy import inspect, text
@@ -33,10 +35,20 @@ _add_missing_columns("insights", {
 
 app = FastAPI(title="Linear Wellbeing API")
 
+# CORS — accept a comma-separated list via CORS_ORIGINS env var, or a wildcard
+# for local dev. In production, set CORS_ORIGINS to your Vercel deployment URL.
+_origins_env = os.environ.get("CORS_ORIGINS", "*").strip()
+if _origins_env == "*":
+    cors_origins = ["*"]
+    allow_credentials = False  # browsers reject "*" with credentials
+else:
+    cors_origins = [o.strip() for o in _origins_env.split(",") if o.strip()]
+    allow_credentials = True
+
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["*"],
-    allow_credentials=True,
+    allow_origins=cors_origins,
+    allow_credentials=allow_credentials,
     allow_methods=["*"],
     allow_headers=["*"],
 )
@@ -52,3 +64,8 @@ app.include_router(users.router, prefix="/api")
 @app.get("/")
 def root():
     return {"message": "Linear API running"}
+
+
+@app.get("/healthz")
+def healthz():
+    return {"status": "ok"}

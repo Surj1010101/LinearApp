@@ -1,0 +1,27 @@
+# Render Blueprint — deploys the FastAPI backend.
+# Docs: https://render.com/docs/blueprint-spec
+#
+# After importing this Blueprint into Render, set the secret env vars
+# (SECRET_KEY, GOOGLE_API_KEY) in the Render dashboard.
+
+services:
+  - type: web
+    name: linear-api
+    runtime: python
+    plan: free
+    rootDir: linear/backend
+    buildCommand: |
+      pip install --upgrade pip
+      pip install -r requirements.txt
+      python -m nltk.downloader vader_lexicon
+    startCommand: uvicorn app.main:app --host 0.0.0.0 --port $PORT
+    healthCheckPath: /healthz
+    envVars:
+      - key: PYTHON_VERSION
+        value: 3.11.9
+      - key: SECRET_KEY
+        sync: false
+      - key: GOOGLE_API_KEY
+        sync: false
+      - key: CORS_ORIGINS
+        sync: false
