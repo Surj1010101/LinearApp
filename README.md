@@ -106,26 +106,49 @@ Open <http://localhost:3000>.
 
 ## Deploy
 
-### Backend — Render
+### Backend — Hugging Face Spaces (no credit card required)
 
-1. Push this repo to GitHub.
-2. In Render, click **New → Blueprint** and point it at the repo. Render reads `render.yaml`.
-3. After the service is created, add the secret env vars in the dashboard:
-   - `SECRET_KEY` — generate as above.
-   - `GOOGLE_API_KEY` — optional, for AI insights.
-   - `CORS_ORIGINS` — your Vercel URL, e.g. `https://linear-app.vercel.app`.
-4. Render builds, downloads the NLTK lexicon, and starts `uvicorn` on the free plan. Healthcheck: `/healthz`.
+The backend ships as a Docker image. Hugging Face Spaces runs Docker images for free, with no credit card.
 
-> The free Render web service spins down after inactivity; the first request after idle will be slow (~30s cold start). Hitting `/healthz` from a cron keeps it warm if needed.
+1. Sign in at <https://huggingface.co> and click **New Space**.
+2. Settings:
+   - **Space name:** `linear-api` (or anything you like)
+   - **SDK:** **Docker**
+   - **Template:** Blank
+   - **Hardware:** CPU basic — free
+   - Visibility: Public
+3. Click **Create Space**. HF gives you a git repo URL like `https://huggingface.co/spaces/<you>/linear-api`.
+4. Clone the Space repo and copy the backend files into it:
+
+   ```bash
+   git clone https://huggingface.co/spaces/<you>/linear-api hf-space
+   cp -r linear/backend/* linear/backend/.* hf-space/ 2>/dev/null   # copies Dockerfile, app/, README.md, requirements.txt
+   cd hf-space
+   git add -A && git commit -m "deploy linear api"
+   git push
+   ```
+
+5. In the Space, open **Settings → Variables and secrets** and add:
+   - `SECRET_KEY` (secret) — generate as above.
+   - `GOOGLE_API_KEY` (secret) — optional, for AI insights.
+   - `CORS_ORIGINS` (variable) — your Vercel URL, e.g. `https://linear-app.vercel.app`.
+6. The Space rebuilds automatically. Your API URL is `https://<you>-linear-api.hf.space`.
+7. Verify: `https://<you>-linear-api.hf.space/healthz` returns `{"status": "ok"}`.
+
+> **SQLite is ephemeral on free Spaces** — data is lost on every rebuild. Fine for a portfolio demo. For permanent storage, sign up for a free [Neon](https://neon.tech) Postgres (no card) and set `DATABASE_URL` in the Space variables.
+
+#### Alternative: Render
+
+A `render.yaml` Blueprint is included in the repo root for users with a Render account. Free plan now requires a card for verification.
 
 ### Frontend — Vercel
 
 1. Import the repo into Vercel — it detects `vercel.json` at the root and builds from `linear/frontend`.
 2. In **Project Settings → Environment Variables**, add:
-   - `VITE_API_URL` = `https://<your-render-service>.onrender.com/api`
+   - `VITE_API_URL` = `https://<you>-linear-api.hf.space/api` (Hugging Face URL + `/api`)
 3. Deploy. The SPA fallback (rewrite rule in `vercel.json`) handles React Router routes.
 
-After both are up, set `CORS_ORIGINS` on the backend to your Vercel URL and redeploy the backend.
+After both are up, set `CORS_ORIGINS` on the backend to your Vercel URL and trigger a rebuild of the Space.
 
 ---
 
