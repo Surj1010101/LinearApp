@@ -1,3 +1,6 @@
+I MADE THIS README USING CLAUDE. SO IF SOMETHING IS MISSING BLAME IT ON Anthropic, THANKU
+
+
 # Linear — Wellbeing for Hybrid Workers
 
 A full-stack web app that helps hybrid workers track mood, energy, stress, screen time, hydration, and meals — then turns those signals into AI-generated insights and personalised recommendations.
