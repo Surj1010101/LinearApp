@@ -2,8 +2,8 @@
 
 A full-stack web app that helps hybrid workers track mood, energy, stress, screen time, hydration, and meals — then turns those signals into AI-generated insights and personalised recommendations.
 
-**Live demo:** _add your Vercel URL here once deployed_
-**API:** _add your Render URL here once deployed_
+**Live demo:** <https://linearealth.vercel.app>
+**API:** <https://kaolanreal-linear-api.hf.space>  ·  [Swagger docs](https://kaolanreal-linear-api.hf.space/docs)
 
 ---
 
